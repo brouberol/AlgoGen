@@ -4,51 +4,95 @@
 \maketitle
 
 \section{Introduction}
- 
+%Marie
+L'objectif de ce document est de prévoir le déroulement futur du projet sur un maximum d'aspects, et de clarifier les éléments touchant à la gestion du projet. Ainsi, la lecture de celui-ci devrait permettre de connaître avec le plus de précisions possibles l'organisation du projet, à la fois d'un point de vue humain (répartition de l'équipe en sous-équipes,...) et d'une point de vue des livrables à produire, ou des tâches à effectuer (estimation et répartition des tâches,...).
+%Pfiou c'était dur
 
-\section{Contexte et rappel du problÃ¨me}
+\section{Contexte et rappel du problème}
 \subsection{Contexte}
 %Balto
-L'Ã©tude des systÃ¨mes biologiques complexes par modÃ©lisation sous forme de rÃ©seau est un moyen efficace de comprendre le fonctionnement intrinsÃ¨que Ã  ces systÃ¨mes. En effet, il est possible de relier la structure du sytÃ¨me aux fonctions de ses composantes. Par exemple, en Ã©tudiant la structure d'un rÃ©seau social, on peut comprendre comment l'information se diffuse ainsi que le rÃ´le tenu par les utilisateurs dans son relai.
+L'étude des systèmes biologiques complexes par modélisation sous forme de réseau est un moyen efficace de comprendre le fonctionnement intrinsèque à ces systèmes. En effet, il est possible de relier la structure du système aux fonctions de ses composantes. Par exemple, en étudiant la structure d'un réseau social, on peut comprendre comment l'information se diffuse ainsi que le rôle tenu par les utilisateurs dans son relai.
 
 \medskip
-Les rÃ©seaux biologiques sont caractÃ©risÃ©s par une architecture "sans-Ã©chelle", dans laquelle certaines composantes jouent un rÃ´le plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le rÃ©seau Internet ainsi que  l'ATP dans le rÃ©seau mÃ©tabolique de la cellule. Cette architecture implique une distribution des degrÃ©s des noeuds selon une loi de puissance de paramÃ¨tre $\gamma$, compris entre 2 et 3 pour la grande majoritÃ© des rÃ©seaux biologiques ($\gamma_{moy}\simeq 2.1$).
-Une autre caractÃ©ristique d'un tel rÃ©seau est la formation de cliques au sein de sa structure. 
+Les réseaux biologiques sont caractérisés par une architecture "sans-échelle", dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ainsi que  l'ATP dans le réseau métabolique de la cellule. Cette architecture implique une distribution des degrés des noeuds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3 pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$).
+Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure. 
 
 \subsection{Objectifs}
 %Balto
-Le but de ce projet est de gÃ©nÃ©rer un rÃ©seau biologique en utilisant un algorithme gÃ©nÃ©tique, dÃ©veloppÃ© en scÃ©ance d'Optimisation. Il faudra donc pour cela dÃ©cider d'une fonction de fitness adaptÃ©e Ã  ce type de rÃ©seau, afin que les rÃ©seaux gÃ©nÃ©rÃ©s se rapprochent de gÃ©nÃ©ration en gÃ©nÃ©ration d'un rÃ©seau biologique "idÃ©al".
+Le but de ce projet est de générer un réseau biologique en utilisant un algorithme génétique, développé en séance d'Optimisation. Il faudra donc pour cela décider d'une fonction de fitness adaptée à ce type de réseau, afin que les réseaux générés se rapprochent de génération en génération d'un réseau biologique "idéal".
 
 \medskip
-Les propriÃ©tÃ©s d'architecture "sans-Ã©chelle" et de modularitÃ© du rÃ©seau sont relativement contradictoires : la prÃ©sence de hubs rend relativement improbable l'isolation de certains noeuds du rÃ©seau, ce qui est pourtant suggÃ©rÃ© par les cliques dans contenues dans la structure. Il faudra donc construire la fonction de fitness autour d'un compromis acceptable entre ces deux conditions.
+Les propriétés d'architecture "sans-échelle" et de modularité du réseau sont relativement contradictoires : la présence de hubs rend relativement improbable l'isolation de certains noeuds du réseau, ce qui est pourtant suggéré par les cliques dans contenues dans la structure. Il faudra donc construire la fonction de fitness autour d'un compromis acceptable entre ces deux conditions.
 
-\section{Documents de rÃ©fÃ©rence}
+\section{Documents de référence}
 %Balto
-Les connaissances gÃ©nÃ©rales sur la structure, l'architecture et le comportement des rÃ©seaux biologiques nous viennent de deux articles :
+Les connaissances générales sur la structure, l'architecture et le comportement des réseaux biologiques nous viennent de deux articles :
 
 \begin{itemize}
 	\item "Exploring complex networks", \textit{Steven H. Strogatz}, Nature, Vol. 410, March 2001
 	\item "Network biology : understanding the cell's functional organization", \textit{Albert-L\'{a}zlo Barab\'{a}si, Zolt\'{a}n N. Oltvai}, Nature reviews, Genetics, Volume 5, February 2001\medskip
 \end{itemize}
 
-%A complÃ©ter aprÃ¨s ajout de biblio, par Anthony et Marion
+%A compléter après ajout de biblio, par Anthony et Marion
 
-L'algorithme gÃ©nÃ©tique est celui contenu dans le fichier correction \texttt{pyAG.py}, fourni par Mr H. Soula.
-\section{Contraintes gÃ©nÃ©rales}
+L'algorithme génétique est celui contenu dans le fichier correction \texttt{pyAG.py}, fourni par Mr H. Soula.
+\section{Contraintes générales}
 
-\subsection{Contraines}
+\subsection{Contraintes}
 
 \subsection{Risques}
 
 \section{Organisation du travail}
-\subsection{RÃ´les distribuÃ©s}
+\subsection{Rôles distribués}
 
-\subsection{RÃ¨gles de suivi}
+\subsubsection{Chef de Projet}
+\textbf{Balthazar Rouberol}\\
+Le chef de projet a un rôle de coordinateur :  
+\begin{itemize}
+\item Il est responsable du bon déroulement du projet.
+\item Il doit décomposer le projet en différentes tâches
+\item Il répartit les tâches aux membres du groupe.
+\item Il constitue le planning prévisionnel.
+\item Il organise et supervise le travail de chacun jusqu'à la présentation du projet.
+\end{itemize}
+  
+\subsubsection{Responsable Qualité}
+\textbf{Marion Poirel}\\
+Elle contrôle la qualité des biens produits par le groupe. Elle doit définir les règles de qualité et donner des recommandations aux autres membres du groupe. Elle effectue la relecture des documents produits.
 
-\subsection{Organigramme des tÃ¢ches}
+\subsubsection{Responsable bibliographie}
+\textbf{Anthony Tschirhard}\\
+Il recherche un maximum d'informations sur le sujet des réseaux, et notamment des réseaux sociaux, afin de compléter les documents de référence donnés par le professeur.
 
-\subsection{Outils utilisÃ©s}
+\subsubsection{Responsable Documentation}
+\textbf{Marie Paturel}\\
+Elle est en charge de la compréhension de la documentation, et notamment du package NetworkX. Elle doit résumer aux autres membres le fonctionnement de ce dernier afin qu'il soit utilisable par l'ensemble du groupe.
+
+\subsubsection{Groupe d'étude informatique}
+\textbf{Balthazar Rouberol, Anthony Tschirhard, Marion Poirel, Marie Paturel}\\
+Le groupe d'étude informatique gère l'analyse du sujet et la rédaction des documents du projet. Ce groupe suit les tâches affectées par le chef de projet et suit les recommandation du responsable qualité. Il rédige des documents tels que le dossier initialisation et le dossier conception.\\
+Le groupe d'étude informatique a également pour charge de développer le programme répondant aux attentes du projet, ainsi que de le débugger.
+
+
+\subsection{Règles de suivi}
+
+\subsection{Organigramme des tâches}
+
+\subsection{Outils utilisés}
 
 \section{Conclusion}
+%Marie
+Ce dossier présente la gestion d'un projet à réaliser dans un temps assez restreint. Il faudra donc tâcher de travailler le plus efficacement pendant les séances prévues à cet effet, afin d'éviter de se laisser déborder et d'accumuler du travail hors séances.\\
+Les possibilités de retard étant nombreuses, le rôle de chef de projet sera primordial dans la définition des tâches et du planning associé.\\
+L'implication des membres du groupe doit être totale afin de respecter les dates de rendu des documents ainsi que les règles de qualité.
 
 \end{document}
+
+
+
+
+
+
+
+
+
