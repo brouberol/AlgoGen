@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  10 MAR 2011 17:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  10 MAR 2011 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,31 +680,47 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 38.
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) [2
 
-] [3] [4]
-(./AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.aux) ) 
+]
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+[3] [4] [5] [6] [7] (./AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.aux) ) 
 Here is how much of TeX's memory you used:
- 8119 strings out of 495061
- 109468 string characters out of 1182620
- 186159 words of memory out of 3000000
- 11129 multiletter control sequences out of 15000+50000
- 15476 words of font info for 42 fonts, out of 3000000 for 9000
+ 8136 strings out of 495061
+ 109642 string characters out of 1182620
+ 187159 words of memory out of 3000000
+ 11134 multiletter control sequences out of 15000+50000
+ 16177 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 42i,5n,36p,653b,406s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/balto/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/balto/.texmf-var/fonts/pk/lj
-four/jknappen/ec/ectt1095.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecti1095.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1
-200.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> 
-</home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/balt
-o/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/balto/.texmf-va
-r/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.pdf (4 pages, 13
-8314 bytes).
+ 42i,5n,36p,653b,410s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </ho
+me/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1095.600pk> </home/balto/.t
+exmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/balto/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/balto/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecti1095.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen
+/ec/ecbx1200.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm109
+5.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </
+home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/balto/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
+y10.pfb>
+Output written on AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.pdf (7 pages, 15
+8613 bytes).
 PDF statistics:
- 401 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
+ 459 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
  153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
