@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  9 MAR 2011 18:44
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  10 MAR 2011 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -708,27 +708,48 @@ LaTeX Info: Redefining \pageref on input line 3.
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for U+msa on input line 15.
 
-]
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 15.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 36.
+
+(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+) [2
+
+] [3]
 (./AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.aux) ) 
 Here is how much of TeX's memory you used:
- 9558 strings out of 495061
- 129234 string characters out of 1182620
- 204554 words of memory out of 3000000
- 12581 multiletter control sequences out of 15000+50000
- 9342 words of font info for 22 fonts, out of 3000000 for 9000
+ 9631 strings out of 495061
+ 130592 string characters out of 1182620
+ 209554 words of memory out of 3000000
+ 12626 multiletter control sequences out of 15000+50000
+ 14693 words of font info for 41 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 42i,5n,36p,328b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,5n,36p,653b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/balto/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/balto/.texmf-var/fonts/pk/lj
-four/jknappen/ec/ecrm1095.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecrm1440.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2
-074.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk>
-Output written on AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.pdf (2 pages, 53
-184 bytes).
+fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/balto/.texmf-var/fonts/pk/lj
+four/jknappen/ec/ecti1095.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecbx1200.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1
+095.600pk> </home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> 
+</home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/balt
+o/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+msy10.pfb>
+Output written on AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.pdf (3 pages, 11
+7638 bytes).
 PDF statistics:
- 201 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 327 PDF objects out of 1000 (max. 8388607)
+ 18 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

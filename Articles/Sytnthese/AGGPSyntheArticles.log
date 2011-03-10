@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  9 MAR 2011 18:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  10 MAR 2011 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -725,9 +725,9 @@ LaTeX Warning: No \author given.
 File: Nwk.png Graphic file (type png)
  <use Nwk.png> [2 <./Nwk.png (PNG copy)>] [3] (./AGGPSyntheArticles.aux) ) 
 Here is how much of TeX's memory you used:
- 9616 strings out of 495061
- 129666 string characters out of 1182620
- 210147 words of memory out of 3000000
+ 9617 strings out of 495061
+ 129672 string characters out of 1182620
+ 210157 words of memory out of 3000000
  12608 multiletter control sequences out of 15000+50000
  15136 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -744,9 +744,9 @@ mf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/f
 onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
 ts/cm/cmsy8.pfb>
-Output written on AGGPSyntheArticles.pdf (3 pages, 250631 bytes).
+Output written on AGGPSyntheArticles.pdf (3 pages, 251011 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 22 named destinations out of 1000 (max. 500000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
