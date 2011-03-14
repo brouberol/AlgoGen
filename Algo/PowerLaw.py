@@ -13,29 +13,29 @@ NB_POINTS = 30
 MIN = 1
 MAX = 10
 X = linspace(MIN,MAX,NB_POINTS) # x from MIN to MAX with NB_POINTS points
-LAW_COLOR=["orange","green"]
+LAW_COLOR=["orange","green","red"]
 
 
 # Functions 
 def PowerLaw(gamma):
-    """Generates a power law distribution"""
-    return [x**(-gamma) for x in X]
+    """ Generates a power law distribution """
+    return [10*x**(-gamma) for x in X]# coeff : deg max ?
+
 
 def GammaRange():
-    """ Range from 2 to 3 
-    corresponds to biological networks"""
+    """ Range from 2 to 3. 
+    Corresponds to biological networks """
     return arange(2,3.1,1)
 
 def Legend(gamma):
-    """ Generates the legend string with the gamma values"""
+    """ Generates the legend string with the gamma values """
     s=[]
     for g in gamma:
         s.append("gamma = "+str(g))
     return s
 
-def PlotPowerLaw():
-    """Plots power laws 
-    for all gammas in GammaRange()"""
+def PlotLimitPowerLaw(Degree):
+    """ Plots power laws for all gammas in GammaRange() """
     col = 0
     
     for g in GammaRange():
@@ -46,16 +46,30 @@ def PlotPowerLaw():
             print 'Size incoherency'
         col+=1
     
-    # Plot features
+    # Basic plot features
     p.title("Extreme power laws for biological networks")
     p.xlabel("x")
     p.ylabel("Power law : x**-gamma")
-    l = Legend(GammaRange())
-    p.legend((l[0],l[1]),'upper right')
     p.grid()
+    
+    # Add the node degree distribution
+    AddDegreeLaw(Degree,col)
+    
+    # Final plot features
+    l = Legend(GammaRange())
+    p.legend((l[0],l[1],"Degree distribution"),'upper right')
     p.savefig("Plot.png")
     p.close()
 
+def AddDegreeLaw(DegreeDistrib,col):
+    """ Add the node degree distribution on the power laws plot """
+    # DegreeDistrib = [(NbNodes, deg),(...)]
+    x = [DegreeDistrib[i][0] for i in range(len(DegreeDistrib))]
+    y = [DegreeDistrib[i][1] for i in range(len(DegreeDistrib))]
+    p.scatter(x,y,c=LAW_COLOR[col])
+
+    
 # MAIN
 
-PlotPowerLaw()
+Deg = [(1,10),(2,2),(3,1),(4,1)] # artificial list of degrees and nb of nodes
+PlotLimitPowerLaw(Deg)
