@@ -14,8 +14,9 @@ L'objectif de ce document est de prévoir le déroulement futur du projet sur un
 L'étude des systèmes complexes par modélisation sous forme de réseau est un moyen efficace de comprendre leur fonctionnement intrinsèque. En effet, il est possible de relier la structure du système aux fonctions de ses composantes. A l'heure actuelle, les réseaux biologiques sont très étudiés : 
 
 
-Des réseaux tels que des réseaux biologiques ou sociaux sont caractérisés par une architecture \og sans-échelle \fg {}, dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ou l'ATP, l'ADN polymérase ou l'AMPc. Cette architecture implique une distribution de degrés des n\oe uds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3, comme pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$). Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure.\\
+Des réseaux tels que des réseaux biologiques ou sociaux sont caractérisés par une architecture \og sans-échelle \fg {}, dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ou l'ATP, l'ADN polymérase ou l'AMPc. Cette architecture implique une distribution de degrés des n\oe uds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3, comme pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$). Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure.
 
+\medskip
 Savoir comment un tel réseau évolue au cours du temps est aujourd'hui une préoccupation grandissante car cela permet de mieux les maîtriser. Un autre point intéressant est la recherche de conditions qui amènent un réseau à avoir la structure particulière qui lui est propre.
 
 \subsection{Objectifs}
@@ -41,24 +42,28 @@ L'algorithme génétique est celui contenu dans le fichier correction \texttt{py
 % Marion
 Tout projet est gouverné par la triade des contraintes de coût, délai, qualité. Ici, celle de coût est négligeable, s'agissant simplement d'un projet scolaire. Il convient cependant de trouver un équilibre entre la contrainte de temps et celle de qualité.
 
-L'aspect temporel est ici primordial : ce projet présente une contrainte calendaire imposée qui ne peut être contournée -- dates de rendu des différents livrables et de la soutenance. Le délai étant relativement court, il est important de ne pas se faire prendre par le temps.
+L'aspect temporel est ici primordial : ce projet présente une contrainte calendaire imposée qui ne peut être contournée (dates de rendu des différents livrables et de la soutenance). Le délai étant relativement court, il est important de ne pas se faire prendre par le temps.
 
 La qualité est cruciale. Elle sera garante de résultats fiables, exploitables et reproductibles. 
 
-L'échéance étant proche, il est important d'établir un compromis entre temps et qualité. Prévoir une marge de manœuvre autorisera une bonne conduite du projet.\\
+L'échéance étant proche, il est important d'établir un compromis entre temps et qualité. Prévoir une marge de manœuvre autorisera une bonne conduite du projet.
 
+\medskip
 Une exigence est l'utilisation du package \verb?NetworkX? de Python. Il permet la création et l'exploitation de graphes complexes de type réseau. Le maîtriser est une étape nécessaire, préalable à celle de programmation.
 
 Une exploitation du code est attendue. Une des finalités de l'exercice étant de faire émerger des propriétés connues de réseaux biologiques et d'étudier leur apparition.
 
+\medskip
 Enfin, l'exigence principale est l'apprentissage de la gestion d'un projet : travail en groupe, répartition des tâches, dossiers à rendre, etc. sont autant d'aspects dont nous devons tenir compte.
 
 \subsection{Risques}
 % Marion
-Les risques à considérer sont de deux sortes : risques liés au sujet d'étude et risques liés à la gestion de projet.\\
+Les risques à considérer sont de deux sortes : risques liés au sujet d'étude et risques liés à la gestion de projet.
 
-Rapport au sujet d'étude, il est à craindre une mauvaise compréhension conduisant à une approche non adaptée. Cela pourrait conduire à omettre une problématique importante et donc à réaliser une étude incomplète, voire incorrecte.\\
+\medskip
+Rapport au sujet d'étude, il est à craindre une mauvaise compréhension conduisant à une approche non adaptée. Cela pourrait conduire à omettre une problématique importante et donc à réaliser une étude incomplète, voire incorrecte.
 
+\medskip
 Quant à la gestion de projet en elle-même, elle peut faire émerger des difficultés aussi bien organisationnelles que relationnelles ou encore matérielles.
 
 L'absence ou le manque de travail d'un des membres du groupe peut aboutir à un retard pouvant mettre en péril l'aboutissement du projet. Le chef de projet se doit de veiller à la motivation et l'implication de l'équipe afin de prévenir de tels risques ainsi qu'un manque de productivité, notamment lors des réunions. L'ambiance de groupe a également son importance, influençant directement la communication et la motivation.
@@ -78,9 +83,9 @@ Le chef de projet a un rôle de coordinateur : il est responsable du bon déroul
 \textbf{Marion Poirel}\\
 Elle contrôle la qualité des documents produits par le groupe. Elle doit définir les règles de qualité et donner des recommandations aux autres membres du groupe. Elle effectue la relecture des documents produits.
 
-\subsubsection{Maitre d'\oeuvre}
+\subsubsection{Maitre d'oeuvre}
 \textbf{Anthony Tschirhard}
-Le rôle du maitre d'\oeuvre est de réfléchir à la résolution des différents objectifs du projet ; proposer des méthodologies de travail et de codage.
+Le rôle du maitre d'oeuvre est de réfléchir à la résolution des différents objectifs du projet ; proposer des méthodologies de travail et de codage.
 
 \subsubsection{Responsable Documentation}
 \textbf{Marie Paturel}
@@ -93,9 +98,6 @@ Le groupe d'étude informatique gère l'analyse du sujet et la rédaction des do
 
 Le groupe d'étude informatique a également pour charge de développer le programme répondant aux attentes du projet, ainsi que de le débugger.
 
-
-\textbf{Marie Paturel}\\
-Elle est en charge de la compréhension de la documentation, et notamment du package \texttt{NetworkX}. Elle doit résumer aux autres membres le fonctionnement de ce dernier afin qu'il soit utilisable par l'ensemble du groupe.
 
 \subsubsection{Groupe d'étude informatique}
 \textbf{Balthazar Rouberol, Anthony Tschirhard, Marion Poirel, Marie Paturel}\\
