@@ -5,24 +5,23 @@
 
 \section{Introduction}
 %Marie
-L'objectif de ce document est de prévoir le déroulement futur du projet sur un maximum d'aspects, et de clarifier les éléments touchant à la gestion du projet. Ainsi, la lecture de celui-ci devrait permettre de connaître avec le plus de précision possible l'organisation du projet, à la fois d'un point de vue humain (répartition de l'équipe en sous-équipes,...) et d'une point de vue des livrables à produire, ou des tâches à effectuer (estimation et répartition des tâches,...).
+L'objectif de ce document est de prévoir le déroulement futur du projet sur un maximum d'aspects, et de clarifier les éléments touchant à la gestion du projet. Ainsi, sa lecture devrait permettre de connaître précisément l'organisation du projet, à la fois d'un point de vue humain (répartition de l'équipe en sous-équipes,...) et d'un point de vue des livrables à produire, ou des tâches à effectuer (estimation et répartition des tâches,...).
 %Pfiou c'était dur
 
 \section{Contexte et rappel du problème}
 \subsection{Contexte}
 %Balto
-L'étude des systèmes biologiques complexes par modélisation sous forme de réseau est un moyen efficace de comprendre le fonctionnement intrinsèque à ces systèmes. En effet, il est possible de relier la structure du système aux fonctions de ses composantes. Par exemple, en étudiant la structure d'un réseau social, on peut comprendre comment l'information se diffuse ainsi que le rôle tenu par les utilisateurs dans son relai.
+L'étude des systèmes complexes par modélisation sous forme de réseau est un moyen efficace de comprendre leur fonctionnement intrinsèque. En effet, il est possible de relier la structure du système aux fonctions de ses composantes. A l'heure actuelle, les réseaux sociaux sont très étudiés : l'émergence de moyens de communication est à l'origine d'une organisation originale qu'il peut s'avérer très utile de comprendre. Par exemple, la structure d'un réseau social permet de comprendre comment l'information se diffuse ainsi que le rôle tenu par les utilisateurs dans son relai.
 
-\medskip
-Les réseaux biologiques sont caractérisés par une architecture "sans-échelle", dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ainsi que  l'ATP dans le réseau métabolique de la cellule. Cette architecture implique une distribution des degrés des noeuds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3 pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$).
-Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure. 
+Les réseaux sociaux sont caractérisés par une architecture \og sans-échelle \fg {}, dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ou encore de personnalités éminentes. Cette architecture implique une distribution de degrés des n\oe uds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3, comme pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$). Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure.
+
+Savoir comment un tel réseau évolue au cours du temps est aujourd'hui une préoccupation grandissante car cela permet de mieux les maîtriser. Un autre point intéressant est la recherche de conditions qui amènent un réseau à avoir la structure particulière qui lui est propre.
 
 \subsection{Objectifs}
 %Balto
-Le but de ce projet est de générer un réseau biologique en utilisant un algorithme génétique, développé en séance d'Optimisation. Il faudra donc pour cela décider d'une fonction de fitness adaptée à ce type de réseau, afin que les réseaux générés se rapprochent de génération en génération d'un réseau biologique "idéal".
+Le but de ce projet est de générer un réseau social en utilisant un algorithme génétique, développé en séance d'Optimisation. Il faudra pour cela décider d'une fonction de fitness adaptée, afin que les réseaux générés se rapprochent de génération en génération d'un réseau social \og idéal \fg .
 
-\medskip
-Les propriétés d'architecture "sans-échelle" et de modularité du réseau sont relativement contradictoires : la présence de hubs rend relativement improbable l'isolation de certains noeuds du réseau, ce qui est pourtant suggéré par les cliques dans contenues dans la structure. Il faudra donc construire la fonction de fitness autour d'un compromis acceptable entre ces deux conditions.
+Les propriétés d'architecture \og sans-échelle \fg{} et de modularité du réseau sont relativement contradictoires : la présence de hubs rend improbable l'isolation de certains n\oe{}uds du réseau, ce qui est pourtant suggéré par la formation de cliques. Il faudra donc construire la fonction de fitness autour d'un compromis acceptable entre ces deux conditions.
 
 \section{Documents de référence}
 %Balto, Marion et Anthony
@@ -30,7 +29,7 @@ Les connaissances générales sur la structure, l'architecture et le comportemen
 
 \begin{itemize}
 	\item "Exploring complex networks", \textit{Steven H. Strogatz}, Nature, Vol. 410, March 2001
-	\item "Network biology : understanding the cell's functional organization", \textit{Albert-L\'{a}zlo Barab\'{a}si, Zolt\'{a}n N. Oltvai}, Nature reviews, Genetics, Volume 5, February 2001\medskip
+	\item "Network biology : understanding the cell's functional organization", \textit{Albert-L\'{a}zlo Barab\'{a}si, Zolt\'{a}n N. Oltvai}, Nature reviews, Genetics, Vol. 5, February 2001\medskip
 \end{itemize}
 
 %A compléter après ajout de biblio, par Anthony et Marion
@@ -39,21 +38,21 @@ L'algorithme génétique est celui contenu dans le fichier correction \texttt{py
 
 \section{Contraintes générales}
 
-\subsection{Contraines}
+\subsection{Contraintes}
 % Marion
-Tout projet est gouverné par la triade des contraintes coût, délais, qualité. Ici, celle de coût est négligeable, s'agissant simplement d'un projet scolaire. Il convient cependant de trouver un équilibre entre la contrainte de temps et celle de qualité.
+Tout projet est gouverné par la triade des contraintes de coût, délai, qualité. Ici, celle de coût est négligeable, s'agissant simplement d'un projet scolaire. Il convient cependant de trouver un équilibre entre la contrainte de temps et celle de qualité.
 
 L'aspect temporel est ici primordial : ce projet présente une contrainte calendaire imposée qui ne peut être contournée (dates de rendu des différents livrables et de la soutenance). Le délai étant relativement court, il est important de ne pas se faire prendre par le temps.
 
-La qualité constitue un aspect crucial. Elle sera garante de résultats fiables, exploitables et reproductibles. 
+La qualité est cruciale. Elle sera garante de résultats fiables, exploitables et reproductibles. 
 
-L'échéance étant proche, il est important d'établir un compromis entre temps et qualité. Prévoir une marge de manœuvre semble autorisera une bonne conduite du projet.\\
+L'échéance étant proche, il est important d'établir un compromis entre temps et qualité. Prévoir une marge de manœuvre autorisera une bonne conduite du projet.\\
 
-Une exigence est l'utilisation du package NetworkX de Python. Il permet la création et l'exploitation de graphes complexes de type réseau. Le maîtriser est une étape nécessaire, préalable à celle de programmation.
+Une exigence est l'utilisation du package \verb?NetworkX? de Python. Il permet la création et l'exploitation de graphes complexes de type réseau. Le maîtriser est une étape nécessaire, préalable à celle de programmation.
 
 Une exploitation du code est attendue. Une des finalités de l'exercice étant de faire émerger des propriétés connues de réseaux biologiques et d'étudier leur apparition.
 
-Enfin, l'exigence principale est l'apprentissage de la gestion d'un projet informatique : travail en groupe, répartition des tâches, dossiers à rendre, etc. sont autant d'aspects dont nous devons tenir compte.
+Enfin, l'exigence principale est l'apprentissage de la gestion d'un projet : travail en groupe, répartition des tâches, dossiers à rendre, etc. sont autant d'aspects dont nous devons tenir compte.
 
 \subsection{Risques}
 % Marion
@@ -67,151 +66,141 @@ L'absence ou le manque de travail d'un des membres du groupe peut aboutir à un 
 
 Par ailleurs, une mauvaise gestion du temps peut mettre à mal le projet. L'emploi du temps de chacun étant chargé, il faut faire attention à en respecter les contraintes.
 
-Enfin, les problèmes matériels peuvent fortement influencer l'avancement projet. Un mauvais fonctionnement des machines et/ou du réseau peut bloquer le travail. La perte de données peut avoir des conséquences dramatiques, aussi bien sur le moral que sur l'avancement général.
+Enfin, les problèmes matériels peuvent fortement influencer l'avancement du projet. Un mauvais fonctionnement des machines et/ou du réseau peut bloquer le travail. La perte de données peut avoir des conséquences dramatiques, aussi bien sur le moral que sur l'avancement général.
 
 \section{Organisation du travail}
 \subsection{Rôles distribués}
 
 \subsubsection{Chef de Projet}
-\textbf{Balthazar Rouberol}\\
-Le chef de projet a un rôle de coordinateur :  
-\begin{itemize}
-\item Il est responsable du bon déroulement du projet.
-\item Il doit décomposer le projet en différentes tâches
-\item Il répartit les tâches aux membres du groupe.
-\item Il constitue le planning prévisionnel.
-\item Il organise et supervise le travail de chacun jusqu'à la présentation du projet.
-\end{itemize}
+\textbf{Balthazar Rouberol}
+
+Le chef de projet a un rôle de coordinateur : il est responsable du bon déroulement du projet. Il doit décomposer le projet en différentes tâches et répartir les tâches aux membres du groupe. Il constitue le planning prévisionnel et supervise le travail de chacun jusqu'à la présentation du projet.
   
 \subsubsection{Responsable Qualité}
-\textbf{Marion Poirel}\\
-Elle contrôle la qualité des biens produits par le groupe. Elle doit définir les règles de qualité et donner des recommandations aux autres membres du groupe. Elle effectue la relecture des documents produits.
+\textbf{Marion Poirel}
+
+Elle contrôle la qualité des biens produits par le groupe. Elle doit définir les règles de qualité et donner des recommandations aux autres membres. Elle effectue la relecture des documents.
 
 \subsubsection{Responsable bibliographie}
-\textbf{Anthony Tschirhard}\\
+\textbf{Anthony Tschirhard}
+
 Il recherche un maximum d'informations sur le sujet des réseaux, et notamment des réseaux sociaux, afin de compléter les documents de référence donnés par le professeur.
 
 \subsubsection{Responsable Documentation}
-\textbf{Marie Paturel}\\
-Elle est en charge de la compréhension de la documentation, et notamment du package NetworkX. Elle doit résumer aux autres membres le fonctionnement de ce dernier afin qu'il soit utilisable par l'ensemble du groupe.
+\textbf{Marie Paturel}
+
+Elle est en charge de la compréhension de la documentation, et notamment du package \verb?NetworkX?. Elle doit résumer aux autres membres le fonctionnement de ce dernier afin qu'il soit utilisable par l'ensemble du groupe.
 
 \subsubsection{Groupe d'étude informatique}
-\textbf{Balthazar Rouberol, Anthony Tschirhard, Marion Poirel, Marie Paturel}\\
-Le groupe d'étude informatique gère l'analyse du sujet et la rédaction des documents du projet. Ce groupe suit les tâches affectées par le chef de projet et suit les recommandation du responsable qualité. Il rédige des documents tels que le dossier initialisation et le dossier conception.\\
+\textbf{Balthazar Rouberol, Anthony Tschirhard, Marion Poirel, Marie Paturel}
+
+Le groupe d'étude informatique gère l'analyse du sujet et la rédaction des documents du projet. Ce groupe suit les tâches affectées par le chef de projet et les recommandations du responsable qualité. Il rédige des documents tels que le dossier d'initialisation et le dossier de conception.
+
 Le groupe d'étude informatique a également pour charge de développer le programme répondant aux attentes du projet, ainsi que de le débugger.
 
 
 \subsection{Règles de suivi}
 %Anthony
-Le suivi des tâches et des implications de chacun se feront en continu tout au long de ce projet. Au début de chaque session de travail, l'équipe se réunira afin de :
+Le suivi des tâches et des implications de chacun se fera en continu tout au long de ce projet. Au début de chaque session de travail, l'équipe se réunira afin de :
 \begin{itemize}
-  \item Contrôler l'avancement du travail de chacun et les éventuels problèmes rencontrés ;
+  \item contrôler l'avancement du travail de chacun et les éventuels problèmes rencontrés ;
   \item prendre des mesures correctives en cas de retard dans le projet ;
   \item faire le bilan sur la partie du projet actuellement abordée ;
   \item répartir le travail pour la séance.
 \end{itemize}
 En fin de chaque session de travail, l'équipe se réunira une nouvelle fois afin de :
 \begin{itemize}
-  \item Contrôler l'avancement du travail de chacun et les éventuels problèmes rencontrés ;
+  \item contrôler l'avancement du travail de chacun et les éventuels problèmes rencontrés ;
   \item faire de bilan de la séance achevée ;
-  \item répartir de le travail pour la prochaine session ;
+  \item répartir le travail pour la prochaine session ;
   \item définir une date pour la prochaine séance de travail.
 \end{itemize}
+
+Les réunions auront lieu deux fois par semaine : le mercredi, durant les heures dédiées dans l'emploi du temps, et le vendredi. Ceci permet de suivre l'évolution du projet en continu et de réagir rapidement en cas de problème.
+
 
 \subsection{Organigramme des tâches}
 %Anthony
 \paragraph*{Compréhension du corpus bibliographique réalisé\\}
-Analyse des besoins : 6~heures par personne\\
-Date limite fixée pour le rendu : 17/03/2011\\
-Rôle du responsable de projet : ...\\
-Rôle du maitre d'ouvrage : ...\\
-Rôle du responsable qualité : ...\\
-Rôle du responsable documentation : ...\\
-Blabla sur cet objectif...
+\textbf{Analyse des besoins :} 6~heures par personne\\
+\textbf{Date limite fixée pour le rendu :} 17/03/2011\\
+\textbf{Objectif : }s'approprier le sujet que l'on souhaite traiter afin de répondre aux objectifs\\
+\textbf{Rôle du responsable documentation :} synthétiser les différentes informations recueillies
 
 \paragraph*{Compréhension du module \verb?NetworkX?\\}
-Analyse des besoins : 10~heures pour 2~personnes\\
-Date limite fixée pour le rendu : 20/03/2011\\
-Rôle du responsable de projet : ...\\
-Rôle du maitre d'ouvrage : ...\\
-Rôle du responsable qualité : ...\\
-Rôle du responsable documentation : ...\\
-Rôle des membres du projet : ...\\
-Blabla sur cet objectif...
+\textbf{Analyse des besoins :} 10~heures pour 2~personnes\\
+\textbf{Date limite fixée pour le rendu :} 20/03/2011\\
+\textbf{Objectif :} étude du module \verb?NetworkX? : réalisation d'une documentation et d'un tutoriel pour rendre son utilisation familière aux autres membres du groupe\\
+\textbf{Rôle du maitre d'ouvrage : }étudier la stratégie de réalisation de la documentation et du tutoriel\\
+\textbf{Rôle du responsable documentation : }réaliser un tutoriel et une documentation pour le module
 
 \paragraph*{Modélisation de notre fonction de \textit{fitness}\\}
-Analyse des besoins : 4~heures\\
-Date limite fixée pour le rendu : 20/03/2011\\
-Rôle du responsable de projet : ...\\
-Rôle du maitre d'ouvrage : ...\\
-Rôle du responsable qualité : ...\\
-Rôle du responsable documentation : ...\\
-Rôle des membres du projet : ...\\
-Blabla sur cet objectif...
+\textbf{Analyse des besoins : }6~heures\\
+\textbf{Date limite fixée pour le rendu :} 20/03/2011\\
+\textbf{Objectif : }le point crucial du projet est de définir de manière la plus juste possible une fonction de fitness pour le modèle de réseaux réalisé. Cette fonction doit être adaptée à nos objectifs et correspondre à la réalité observée\\
+\textbf{Rôle du maitre d'ouvrage : }analyser les besoins et les contraintes du système du réseau choisi et réfléchir sur l'implémentation de la fonction de fitness\\
+\textbf{Rôle du responsable documentation : }vérifier que le modèle est bien en accord avec la bibliographie réalisée
 
-\paragraph*{Codage du réseau social et sorties graphiques\\}
-Analyse des besoins : 2~semaines\\
-Date limite fixée pour le rendu : 04/04/2011\\
-Rôle du responsable de projet : ...\\
-Rôle du maitre d'ouvrage : ...\\
-Rôle du responsable qualité : ...\\
-Rôle du responsable documentation : ...\\
-Rôle des membres du projet : ...\\
-Blabla sur cet objectif...
+\paragraph*{Codage du réseau et sorties graphiques\\}
+\textbf{Analyse des besoins : }2~semaines\\
+\textbf{Date limite fixée pour le rendu : }04/04/2011\\
+\textbf{Objectif : }implémenter le programme générant des réseaux biologiques par la technique d'algorithme génétique\\
+\textbf{Rôle du maitre d'ouvrage : }définir l'organisation du code et ses normes syntaxiques. Répartir avec le chef de projet le développement des différentes sous-parties du programme\\
+\textbf{Rôle du responsable qualité : }relire le code et les commentaires\\
+\textbf{Rôle du responsable documentation : }vérifier la cohérence du code avec les articles de la bibliographie
 
-\paragraph*{Phase de débogage du code\}
-Analyse des besoins : 10~heures pour 2~personnes\\
-Date limite fixée pour le rendu : 08/04/2011\\
-Rôle du responsable de projet : ...\\
-Rôle du maitre d'ouvrage : ...\\
-Rôle du responsable qualité : ...\\
-Rôle du responsable documentation : ...\\
-Rôle des membres du projet : ...\\
-Blabla sur cet objectif...
 
-\paragraph*{Réalisation de la présentation vidéo-projetée}
-Analyse des besoins : 4~heures\\
-Date limite fixée pour le rendu : 10/04/2011\\
-Rôle du responsable de projet : ...\\
-Rôle du maitre d'ouvrage : ...\\
-Rôle du responsable qualité : ...\\
-Rôle du responsable documentation : ...\\
-Rôle des membres du projet : ...\\
-Blabla sur cet objectif...
+\paragraph*{Phase de débogage du code\\}
+\textbf{Analyse des besoins :} 10~heures pour 2~personnes\\
+\textbf{Date limite fixée pour le rendu :} 08/04/2011\\
+\textbf{Rôle du maitre d'ouvrage :} planifier les différentes phases de débogage et les méthodes pour y arriver\\
+\textbf{Rôle du responsable qualité :} vérifier la bonne marche du programme
+
+\paragraph*{Réalisation de la présentation}
+\textbf{Analyse des besoins : }4~heures\\
+\textbf{Date limite fixée pour le rendu : }10/04/2011\\
+\textbf{Objectif : }réaliser une présentation synthétique des résultats obtenus\\
+\textbf{Rôle du responsable qualité : } examiner le contenu de la présentation
 
 \subsection{Outils utilisés}
 %Anthony
 Afin de gérer au mieux ce projet, il convenait de mettre toutes les chances de notre côté en utilisant des outils adaptés à ce genre de travaux. Deux outils nous paraissaient particulièrement nécessaires :
 \begin{itemize}
-  \item Un outil permettant de partager du code, à la manière de \textit{subversion}, afin que nous puissions tous travailler en collaboration de manière efficace ;
+  \item un outil permettant de partager du code, à la manière de \textit{subversion}, afin que nous puissions tous travailler en collaboration de manière efficace ;
   \item un outil de gestion de projet, afin que nous puissions tous définir précisément nos objectifs, nos contraintes temporelles et avancées.
 \end{itemize}
 
 \paragraph*{Git\\}
-\medskip Pour le logiciel de gestion de versions, nous avons décidé d'utiliser \textbf{Git}, un logiciel libre simple et efficace, dont la principale tâche est de gérer l'évolution du contenu d'une arborescence. Un logiciel de gestion de versions agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers.
 
-Ce système nous permettra notamment de mutualiser le développement de notre projet. Nous nous servirons de cet outil pour stocker toute évolution des codes sources ou des rapports -- le système conserve en effet une trace de chaque changement. Chacun doit être accompagné d'un commentaire. Le système travaille par fusion de copies locale et distante, et non par écrasement de versions. De cette manière, nous pourrons travailler de concert sur une même source, les changements de l'un n'affectant pas ceux de l'autre.
+Pour le logiciel de gestion de versions, nous avons décidé d'utiliser \textbf{Git}, un logiciel libre simple et efficace, dont la principale tâche est de gérer l'évolution du contenu d'une arborescence.
 
-Pour héberger ce projet, nous avons décider d'utiliser le site de stockage de projet \textbf{GitHub}. Ce service propose l'hébergement de projets sous Git, mais dispose également de fonctionnalités de type réseaux sociaux -- suivi de personnes ou de projets, graphes de réseau pour les dépôts etc. Après avoir ouvert des comptes à nos noms et avoir autorisé nos accès par des clés, nous sommes maintenant en mesure de travailler en collaboration de manière efficace et structurée.
+%Un logiciel de gestion de versions agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers.
 
-Il a été convenu la chose suivante : commencer par récupérer le dépôt disant et le fusionner avant de commencer une nouvelle session de travail, effectuer des \textit{commit} réguliers et bien commentés, et enfin pousser les modifications en fin de session. De cette manière, tout le monde est bien synchronisé avec les autres membres du groupe et le suivi des modifications est propre.
+Ce système nous permettra de mutualiser le développement de notre projet. Nous nous servirons de cet outil pour stocker toute évolution des codes sources ou des rapports -- le système conserve en effet une trace de chaque changement. Chacun doit être accompagné d'un commentaire. Travaillant par fusion de copies locale et distante, nous pourrons travailler de concert sur une même source, les changements de l'un n'affectant pas ceux de l'autre.
+
+Pour héberger ce projet, nous avons décidé d'utiliser le site de stockage de projet \textbf{GitHub} qui propose notamment des fonctionnalités de type réseaux sociaux -- suivi de personnes ou de projets, graphes de réseau pour les dépôts, etc.
+
+Il a été convenu la chose suivante : commencer par récupérer le dépôt et le fusionner avant de commencer une nouvelle session de travail, effectuer des \textit{commit} réguliers et bien commentés, et enfin pousser les modifications en fin de session.
 
 \paragraph*{Redmine\\}
+
 Afin de nous organiser et de mettre en forme les différents défis auxquels nous allons devoir faire face, nous avons décidé d'utiliser une application web Open Source de gestion de projet en mode web : \textbf{Redmine}. Ses principales fonctionnalités sont la gestion multi-projets, la gestion des développeurs et de leurs rôles, des notifications par mail, des historiques, forums, wiki etc.
 
-Nous allons utiliser cette plateforme pour nous organiser dans notre travail -- collectif et individuel --, déterminer les tâches à accomplir, les dates de rendez-vous, de rendus et les progressions des différents membres du groupe.
+Nous allons utiliser cette plateforme pour nous organiser dans notre travail -- collectif et individuel :
 
 \begin{itemize}
-  \item[$\star$] Possibilité de voir les différentes tâches à accomplir et les délais impartis ;
-  \item[$\star$] possibilité de consulter les demandes en cours et d'en émettre (en précisant son échéance, sa durée, son statut, à qui elle va être assignée etc.) ;
-  \item[$\star$] évaluation de l'avancée de chacun et visualisation de celle des autres membres du projet.
+  \item visualisation des différentes tâches à accomplir et les délais impartis ;
+  \item consultation des demandes en cours et émission de nouvelles (en précisant l'échéance, la durée, le statut, à qui elle va être assignée etc.) ;
+  \item[$\star$] évaluation de l'avancée de chacun.
 \end{itemize}
 
 
 \section{Conclusion}
 %Marie
-Ce dossier présente la gestion d'un projet à réaliser dans un temps assez restreint. Il faudra donc tâcher de travailler le plus efficacement pendant les séances prévues à cet effet, afin d'éviter de se laisser déborder et d'accumuler du travail hors séances.\\
-Les possibilités de retard étant nombreuses, le rôle de chef de projet sera primordial dans la définition des tâches et du planning associé.\\
+Ce dossier présente la gestion d'un projet à réaliser dans un temps assez restreint. Il faudra donc tâcher de travailler le plus efficacement pendant les séances prévues à cet effet, afin d'éviter de se laisser déborder et d'accumuler du travail hors séances.
+
+Les possibilités de retard étant nombreuses, le rôle de chef de projet sera primordial dans la définition des tâches et du planning associé.
+
 L'implication des membres du groupe doit être totale afin de respecter les dates de rendu des documents ainsi que les règles de qualité.
 
 \end{document}
