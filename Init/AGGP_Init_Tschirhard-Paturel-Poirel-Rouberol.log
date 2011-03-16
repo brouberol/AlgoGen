@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  10 MAR 2011 18:40
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.11.11)  14 MAR 2011 19:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -699,7 +699,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
 Here is how much of TeX's memory you used:
  8136 strings out of 495061
  109642 string characters out of 1182620
- 187159 words of memory out of 3000000
+ 187160 words of memory out of 3000000
  11134 multiletter control sequences out of 15000+50000
  16177 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -718,7 +718,7 @@ home/balto/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/balto/
 fonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
 y10.pfb>
 Output written on AGGP_Init_Tschirhard-Paturel-Poirel-Rouberol.pdf (7 pages, 15
-8613 bytes).
+8614 bytes).
 PDF statistics:
  459 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)

@@ -6,6 +6,8 @@ The goal is to plot the extreme power laws for biological networks
 defined by 2 <= gamma <= 3.
 Encountered power laws should be plotted within the area determined 
 by the 2 curves.
+We can then add the experimental node degree distribution and compare
+it with the extreme power laws.
 """
 
 # Constants
