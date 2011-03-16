@@ -13,15 +13,14 @@ L'objectif de ce document est de prévoir le déroulement futur du projet sur un
 %Balto
 L'étude des systèmes complexes par modélisation sous forme de réseau est un moyen efficace de comprendre leur fonctionnement intrinsèque. En effet, il est possible de relier la structure du système aux fonctions de ses composantes. A l'heure actuelle, les réseaux biologiques sont très étudiés : 
 
-%l'émergence de moyens de communication est à l'origine d'une organisation originale qu'il peut s'avérer très utile de comprendre. Par exemple, la structure d'un réseau social permet de comprendre comment l'information se diffuse ainsi que le rôle tenu par les utilisateurs dans son relai.
 
-Les réseaux sociaux sont caractérisés par une architecture \og sans-échelle \fg {}, dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ou encore de personnalités éminentes. Cette architecture implique une distribution de degrés des n\oe uds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3, comme pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$). Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure.
+Des réseaux tels que des réseaux biologiques ou sociaux sont caractérisés par une architecture \og sans-échelle \fg {}, dans laquelle certaines composantes jouent un rôle plus important que d'autres : les hubs. On citera les exemples de Google, Facebook et Twitter sur le réseau Internet ou l'ATP, l'ADN polymérase ou l'AMPc. Cette architecture implique une distribution de degrés des n\oe uds selon une loi de puissance de paramètre $\gamma$, compris entre 2 et 3, comme pour la grande majorité des réseaux biologiques ($\gamma_{moy}\simeq 2.1$). Une autre caractéristique d'un tel réseau est la formation de cliques au sein de sa structure.\\
 
 Savoir comment un tel réseau évolue au cours du temps est aujourd'hui une préoccupation grandissante car cela permet de mieux les maîtriser. Un autre point intéressant est la recherche de conditions qui amènent un réseau à avoir la structure particulière qui lui est propre.
 
 \subsection{Objectifs}
 %Balto
-Le but de ce projet est de générer un réseau social en utilisant un algorithme génétique, développé en séance d'Optimisation. Il faudra pour cela décider d'une fonction de fitness adaptée, afin que les réseaux générés se rapprochent de génération en génération d'un réseau social \og idéal \fg .
+Le but de ce projet est de générer un réseau biologique en utilisant un algorithme génétique, développé en séance d'Optimisation. Il faudra pour cela décider d'une fonction de fitness adaptée, afin que les réseaux générés se rapprochent de génération en génération d'un réseau \og idéal \fg .
 
 Les propriétés d'architecture \og sans-échelle \fg{} et de modularité du réseau sont relativement contradictoires : la présence de hubs rend improbable l'isolation de certains n\oe{}uds du réseau, ce qui est pourtant suggéré par la formation de cliques. Il faudra donc construire la fonction de fitness autour d'un compromis acceptable entre ces deux conditions.
 
@@ -33,8 +32,6 @@ Les connaissances générales sur la structure, l'architecture et le comportemen
 	\item "Exploring complex networks", \textit{Steven H. Strogatz}, Nature, Vol. 410, March 2001
 	\item "Network biology : understanding the cell's functional organization", \textit{Albert-L\'{a}zlo Barab\'{a}si, Zolt\'{a}n N. Oltvai}, Nature reviews, Genetics, Vol. 5, February 2001\medskip
 \end{itemize}
-
-%A compléter après ajout de biblio, par Anthony et Marion
 
 L'algorithme génétique est celui contenu dans le fichier correction \texttt{pyAG.py}, fourni par M. Hédi Soula.
 
