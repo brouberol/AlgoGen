@@ -12,12 +12,13 @@ NBPOINTS = 75
 """ Scale free network generating """
 G = nx.scale_free_graph(NBPOINTS)
 D =  G.degree()
-# D.pop(0) # On retire les points de degre 0 pour le plot
+D.pop(0) # On retire les points de degre 0 pour le plot
 Val = D.values()
 Deg = D.keys()
 
 """ Experimental degree distribution plot"""
 plt.figure()
+plt.grid()
 plt.plot(Deg,Val,'ro-')
 plt.xlabel('Degree')
 plt.ylabel('Number of nodes')
