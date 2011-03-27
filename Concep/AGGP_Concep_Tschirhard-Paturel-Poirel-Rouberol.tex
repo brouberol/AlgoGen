@@ -5,22 +5,60 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Présentation générale du projet}
-% Plop
+% Balto
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Les trois grande propriétés du réseau biologique}
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Les objectifs}
+% Marion
+\subsection*{Algorithme génétique}
+
+\subsection*{Gestion de projet}
+
+\subsection*{Exploitation des résultats}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Les grandes propriétés du réseau biologique}
 % Anthony
+Afin d'être le plus proche possible d'un réseau biologie, il convient de connaitre ses caractéristiques et paramètres associés. Les réseaux que nous allons créer et faire évoluer vont devoir répondre à trois grandes caractéristiques : la répartition de ses degrés devra suivre une \textit{loi exponentielle}, il devra vérifier la propriété dite de \textit{\og petit monde \fg} et devra contenir des \textit{cliques}.
 
 \subsection{Répartition des degrés -- Loi exponentielle}
+% Anthony
+\begin{figure}[!h]
+\includegraphics[width=\linewidth]{plot.png}
+\caption{Réseau dont la distribution suit une loi exponentielle}
+\label{scalefree}
+\end{figure}
+La répartition des degrés d'un réseau dit \textit{scale-free} suit une loi exponentielle. Comme le montre la figure~\ref{scalefree}, les degrés des nœuds d'un réseau diminuent quand leur nombre augmente. Autrement dit, on va avoir très peu de nœuds très fortement connectés et beaucoup de nœuds fortement connectés. La loi que suit cette répartition de degrés est la suivante :
+$$ P(k) ~ \alpha k^{-g} $$
+On a donc des nœuds très connectés appelés \textbf{hubs} et une très grande majorité de nœuds très faiblement connectés.	Les articles étudiés dans le cadre de ce projet nous informent que $g$ doit être compris entre 
+
+%-----------------------------------
+%Un reseau scale-free possede une repartition des degres en loi de puissance (P(k) 
+%k􀀀g) c'est-a-dire qu'il possede des noeuds tres connectes appeles hubs et une ma-
+%jorite de noeuds qui sont faiblement connectes. D'apres les articles, le g doit-^etre
+%compris entre 2 et 3, de maniere plus precise entre 2:1 et 2:4, pour les reseaux bio-
+%logiques. Nous choisissons arbitrairement que notre reseau ideal aura un g de 2.2.
+%Nous allons nous appuyer sur ces deux conditions pour implementer la fonction.
+%
+%Nous allons parcourir l'ensemble des noeuds du graphe et calculer la frequence
+%pour chaque degre. Ensuite, nous comparons cette distribution a une loi de puissance
+%en calculant la distance au carre entre la valeur reelle et la valeur theorique.
+%-----------------------------------
+
+
+
 
 \subsection{Propriété de petit monde}
+% Anthony
 
 \subsection{Formation de cliques}
+% Anthony
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Implémentation de la fonction de fitness}
+\section{Implémentation de la fonction de \textit{fitness}}
 % Anthony
 
 
