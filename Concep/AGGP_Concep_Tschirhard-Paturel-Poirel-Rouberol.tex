@@ -26,11 +26,14 @@ Afin d'être le plus proche possible d'un réseau biologie, il convient de conna
 
 \subsection{Répartition des degrés -- Loi exponentielle}
 % Anthony
-\begin{figure}[!h]
-\includegraphics[width=\linewidth]{plot.png}
-\caption{Réseau dont la distribution suit une loi exponentielle}
-\label{scalefree}
-\end{figure}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \vspace{-30pt}
+  \begin{center}
+    \includegraphics[width=0.50\textwidth]{plot.png}
+  \end{center}
+  \caption{Réseau dont la distribution suit une loi exponentielle}
+  \label{scalefree}
+\end{wrapfigure}
 La répartition des degrés d'un réseau dit \textit{scale-free} suit une loi exponentielle. Comme le montre la figure~\ref{scalefree}, les degrés des nœuds d'un réseau diminuent quand leur nombre augmente. Autrement dit, on va avoir très peu de nœuds très fortement connectés et beaucoup de nœuds fortement connectés. La loi que suit cette répartition de degrés est la suivante :
 $$ P(k) ~ \alpha k^{-g} $$
 
@@ -54,10 +57,6 @@ avec
  \item $k_i$ : nombre de voisins de $i$.
 \end{itemize}
 Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
-%Avec Ei le nombre de liens entre voisins et ki le nombre de voisins de i.
-%Nous utiliserons le coecient de clustering global qui correspond a la moyenne
-%des coecients locaux, c'est a dire les Ci. La valeur renvoyee est comprise entre 0 et
-%1 (1 correspond a une abondance de cliques).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
