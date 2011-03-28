@@ -11,11 +11,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Les objectifs}
 % Marion
-\subsection*{Algorithme génétique}
+\subsection{Algorithme génétique}
 
-\subsection*{Gestion de projet}
+\subsection{Gestion de projet}
 
-\subsection*{Les difficultés du projet}
+\subsection{Les difficultés du projet}
 % Balto
 
 
@@ -40,14 +40,31 @@ Afin de faire cela, nous allons donc parcourir l'ensemble des nœuds du graphe e
 
 \subsection{Propriété de petit monde}
 % Anthony
+La propriété de \textbf{petit monde} nous indique que deux nœuds du réseau biologique sont reliés en moyenne par une distance $n$ optimale. Dans ce projet, et considérant le réseau biologique étudié (todo), nous avons décidé de prendre une valeur de $n=...$.
 
-\subsection{Formation de cliques}
+Afin d'avoir accès à cette valeur moyenne, nous nous servirons une fonction du package \verb?NetworkX? qui nous fournira directement ladite valeur. Nous la comparerons ensuite à la valeur théorique\footnote{On dit que dans un réseau social, deux individus pris au hasard sur Terre sont connectés entre eux par l'intermédiaire de $6$~personnes.}.
+
+\subsection{Formation de cliques -- coefficient de \textit{clustering}}
 % Anthony
+Un graphe compte un certain nombre de \textbf{cliques} de différentes tailles. Une clique est un ensemble de nœuds entièrement interconnectés. Le \textbf{coefficient de clustering} est un bon indicateur de la présence de cliques et se calcule pour chaque nœud de la manière suivante :
+$$ C_i = \frac{2Ei}{k_i k_{i-1}} $$
+avec
+\begin{itemize}
+ \item $E_i$ : nombre de liens entre voisins ;
+ \item $k_i$ : nombre de voisins de $i$.
+\end{itemize}
+Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
+%Avec Ei le nombre de liens entre voisins et ki le nombre de voisins de i.
+%Nous utiliserons le coecient de clustering global qui correspond a la moyenne
+%des coecients locaux, c'est a dire les Ci. La valeur renvoyee est comprise entre 0 et
+%1 (1 correspond a une abondance de cliques).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implémentation de la fonction de \textit{fitness}}
 % Anthony
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
