@@ -33,23 +33,10 @@ Afin d'être le plus proche possible d'un réseau biologie, il convient de conna
 \end{figure}
 La répartition des degrés d'un réseau dit \textit{scale-free} suit une loi exponentielle. Comme le montre la figure~\ref{scalefree}, les degrés des nœuds d'un réseau diminuent quand leur nombre augmente. Autrement dit, on va avoir très peu de nœuds très fortement connectés et beaucoup de nœuds fortement connectés. La loi que suit cette répartition de degrés est la suivante :
 $$ P(k) ~ \alpha k^{-g} $$
-On a donc des nœuds très connectés appelés \textbf{hubs} et une très grande majorité de nœuds très faiblement connectés.	Les articles étudiés dans le cadre de ce projet nous informent que $g$ doit être compris entre 
 
-%-----------------------------------
-%Un reseau scale-free possede une repartition des degres en loi de puissance (P(k) 
-%k􀀀g) c'est-a-dire qu'il possede des noeuds tres connectes appeles hubs et une ma-
-%jorite de noeuds qui sont faiblement connectes. D'apres les articles, le g doit-^etre
-%compris entre 2 et 3, de maniere plus precise entre 2:1 et 2:4, pour les reseaux bio-
-%logiques. Nous choisissons arbitrairement que notre reseau ideal aura un g de 2.2.
-%Nous allons nous appuyer sur ces deux conditions pour implementer la fonction.
-%
-%Nous allons parcourir l'ensemble des noeuds du graphe et calculer la frequence
-%pour chaque degre. Ensuite, nous comparons cette distribution a une loi de puissance
-%en calculant la distance au carre entre la valeur reelle et la valeur theorique.
-%-----------------------------------
+On a donc des nœuds très connectés appelés \textit{\textbf{hubs}} et une très grande majorité de nœuds très faiblement connectés.	Les articles étudiés dans le cadre de ce projet nous informent que $g$ doit être compris entre $2$ et $3$, et de manière plus précise entre $2.1$ et $2.3$. Nous avons donc décidé de prendre arbitrairement la valeur de $g=2.2$\footnote{todo : référence à l'article en question !}. Nous allons donc partir de ces deux hypothèses pour implémenter la fonction de répartition des degrés qui entrera en compte dans la détermination de la fonction de \textit{fitness}.
 
-
-
+Afin de faire cela, nous allons donc parcourir l'ensemble des nœuds du graphe et calculer la fréquence de chaque degré. Ensuite, nous comparerons la répartition obtenue à la loi de puissance "optimale" -- dans la cadre de notre modèle. Afin de déterminer l'écart à cette loi, nous calculerons le carré de la distance entre la valeur réelle et la valeur de référence.
 
 \subsection{Propriété de petit monde}
 % Anthony
