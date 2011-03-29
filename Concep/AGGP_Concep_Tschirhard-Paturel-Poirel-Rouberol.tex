@@ -4,15 +4,24 @@
 \maketitle
 
 
+L'objectif de ce document est de prévoir la conception du projet en explicitant l'organisation du code ainsi que le planning des phases de codage, de tests et d'exploitation du code. Ainsi, sa lecture devrait permettre de connaître précisément l'organisation du projet, à la fois au niveau humain (organisation au sein de l'équipe) et temporel.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Présentation générale du projet}
 
 \subsection{Algorithme génétique}
+Le but de ce projet est de faire évoluer une population de réseaux grâce à un algorithme génétique pré-existant. Nous devons définir une \textit{fitness} qui permet de sélectionner les individus sur leurs capacités à s'approcher d'un réseau biologique. A chaque génération, on vérifiera l'adéquation de chaque réseau avec les caractéristiques suivantes : la loi de distribution des degrés, la propriété de petit monde et la présence de cliques. Ceci permettra de sélectionner les individus qui formeront la génération suivante. Des mutations et des \textbf{crossing-over} apporteront de la nouveauté. Au final, on testera la robustesse des réseaux ainsi que leur concordance avec la disassortativité.
 
 \subsection{Les difficultés}
 
 \subsection{L'équipe}
-
+\begin{itemize}
+\item Chef de Projet : Balthazar Rouberol
+\item Responsable Qualité : Marion Poirel
+\item Ma\^itre d'œuvre : Anthony Tschirhard
+\item Responsable Documentation : Marie Paturel
+\item Groupe d'étude informatique : Balthazar Rouberol, Anthony Tschirhard, Marion Poirel, Marie Paturel
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Codage}
