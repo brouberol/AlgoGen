@@ -10,7 +10,9 @@ L'objectif de ce document est de prévoir la conception du projet en explicitant
 \section{Présentation générale du projet}
 
 \subsection{Algorithme génétique}
-Le but de ce projet est de faire évoluer une population de réseaux grâce à un algorithme génétique pré-existant. Nous devons définir une \textit{fitness} qui permet de sélectionner les individus sur leurs capacités à s'approcher d'un réseau biologique. A chaque génération, on vérifiera l'adéquation de chaque réseau avec les caractéristiques suivantes : la loi de distribution des degrés, la propriété de petit monde et la présence de cliques. Ceci permettra de sélectionner les individus qui formeront la génération suivante. Des mutations et des \textbf{crossing-over} apporteront de la nouveauté. Au final, on testera la robustesse des réseaux ainsi que leur concordance avec la disassortativité.
+Le but de ce projet est de faire évoluer une population de réseaux grâce à un algorithme génétique pré-existant. Nous devons définir une \textit{fitness} qui permet de sélectionner les individus sur leurs capacités à s'approcher d'un réseau biologique.
+
+Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau. Celle-ci étant ici symétrique, le réseau est ainsi parfaitement représenté.
 
 \subsection{Les difficultés}
 
@@ -27,6 +29,20 @@ Le but de ce projet est de faire évoluer une population de réseaux grâce à u
 \section{Codage}
 
 \subsection{Principe général}
+Afin de minimiser le temps de convergence, nous partons d'une distribution biaisée/hiérarchique des degrés : la matrice est remplie selon une loi de ?????.
+
+On considère qu'un réseau est biologique s'il possède les trois propriétés suivantes :
+\begin{itemize}
+\item distribution des degrés selon une loi exponentielle de paramètre $2.2$\footnote{article ?} ,
+\item "petit monde",
+\item présence de cliques.
+\end{itemize} 
+
+A chaque génération, on vérifie l'adéquation de chaque réseau avec ses caractéristiques : leur somme pondérée définit la \textit{fitness} d'un individu. Les individus sont classés en fonction de leur \textit{fitness} et sélectionnés selon le procédure suivante : ???. Ceux conservés pour la nouvelle génération subissent des mutations, des \textit{crossing-over} (et des croisements ?), étapes fondamentales de l'évolution.
+
+Une fois la génération finale obtenue, on teste la robustesse des réseaux (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la disassortativité (les hubs ne sont pas reliés entre eux).\\
+
+Cette simulation est faite plusieurs fois, sur X pas de temps (temps moyen de convergence, explication ?). Les paramètres finaux des réseaux sont conservés afin de permettre un étude comparative. D'un simulation à une autre, la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance pourront varier, ce qui permet d'étudier leur impact respectif.
 
 \subsection{Les classes}
 %Anthony
@@ -92,7 +108,7 @@ Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Répartition des tâches et planing}
+\section{Répartition des tâches et planning}
 % Marion
 
 
