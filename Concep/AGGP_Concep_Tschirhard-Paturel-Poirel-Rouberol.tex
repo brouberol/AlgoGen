@@ -14,6 +14,7 @@ Le but de ce projet est de faire évoluer une population de réseaux grâce à u
 Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau. Celle-ci étant ici symétrique, le réseau est ainsi parfaitement représenté.
 
 \subsection{Livrables et délais}
+Nous devons produire un réseau respectant les propriétés d'un réseau biologique, et pouvoir le présenter pour le mercredi 13 avril, c'est à dire 5 semaines après le début du projet.
 
 \subsection{L'équipe}
 \begin{itemize}
@@ -29,33 +30,31 @@ Un individu correspondant à un réseau, le génome manipulé par l'algorithme g
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Rappel sur les réseaux biologiques}
 % Anthony
-Afin d'être le plus proche possible d'un réseau biologie, il convient de connaitre ses caractéristiques et paramètres associés. Les réseaux que nous allons créer et faire évoluer vont devoir répondre à trois grandes caractéristiques : la répartition de ses degrés devra suivre une \textit{loi exponentielle}, il devra vérifier la propriété dite de \textit{\og petit monde \fg} et devra contenir des \textit{cliques}.
 
-\subsection{Répartition des degrés -- Loi exponentielle}
-% Anthony
-\begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-30pt}
+Rappellons ici les propriétés générales d'un réseau biologique à valider par les réseaux à générer :
+\begin{itemize}
+	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) ~ \alpha k^{-\gamma} $, traduisant la faible présence de noeuds ultraconnectés : les hubs
+	\item validation de la propriété de \og petit monde\fg
+	\item formation de cliques 
+\end{itemize}
+
+\paragraph*{Paramètres de la loi de puissance\\}
+La bibiographie suggère de fixer $\gamma $ entre 2 et 3 \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à 2.1\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
+
+
+\paragraph*{Propriété de petit monde \\}
+Cette propriété traduit le fait que tous les noeuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les noeuds dans un réseau métabolique est comprise entre 3 et 4\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+  %\vspace{200pt}
   \begin{center}
     \includegraphics[width=0.50\textwidth]{plot.png}
   \end{center}
-  \caption{Réseau dont la distribution suit une loi exponentielle}
+  \caption{Distribution puissances limites}
   \label{scalefree}
 \end{wrapfigure}
-La répartition des degrés d'un réseau dit \textit{scale-free} suit une loi exponentielle. Comme le montre la figure~\ref{scalefree}, les degrés des nœuds d'un réseau diminuent quand leur nombre augmente. Autrement dit, on va avoir très peu de nœuds très fortement connectés et beaucoup de nœuds fortement connectés. La loi que suit cette répartition de degrés est la suivante :
-$$ P(k) ~ \alpha k^{-g} $$
+\paragraph*{Formation de cliques\\}
 
-On a donc des nœuds très connectés appelés \textit{\textbf{hubs}} et une très grande majorité de nœuds très faiblement connectés.	Les articles étudiés dans le cadre de ce projet nous informent que $g$ doit être compris entre $2$ et $3$, et de manière plus précise entre $2.1$ et $2.3$. Nous avons donc décidé de prendre arbitrairement la valeur de $g=2.2$\footnote{todo : référence à l'article en question !}. Nous allons donc partir de ces deux hypothèses pour implémenter la fonction de répartition des degrés qui entrera en compte dans la détermination de la fonction de \textit{fitness}.
-
-Afin de faire cela, nous allons donc parcourir l'ensemble des nœuds du graphe et calculer la fréquence de chaque degré. Ensuite, nous comparerons la répartition obtenue à la loi de puissance "optimale" -- dans la cadre de notre modèle. Afin de déterminer l'écart à cette loi, nous calculerons le carré de la distance entre la valeur réelle et la valeur de référence.
-
-\subsection{Propriété de petit monde}
-% Anthony
-La propriété de \textbf{petit monde} nous indique que deux nœuds du réseau biologique sont reliés en moyenne par une distance $n$ optimale. Dans ce projet, et considérant le réseau biologique étudié (todo), nous avons décidé de prendre une valeur de $n=...$.
-
-Afin d'avoir accès à cette valeur moyenne, nous nous servirons une fonction du package \verb?NetworkX? qui nous fournira directement ladite valeur. Nous la comparerons ensuite à la valeur théorique\footnote{On dit que dans un réseau social, deux individus pris au hasard sur Terre sont connectés entre eux par l'intermédiaire de $6$~personnes.}.
-
-\subsection{Formation de cliques -- coefficient de \textit{clustering}}
-% Anthony
 Un graphe compte un certain nombre de \textbf{cliques} de différentes tailles. Une clique est un ensemble de nœuds entièrement interconnectés. Le \textbf{coefficient de clustering} est un bon indicateur de la présence de cliques et se calcule pour chaque nœud de la manière suivante :
 $$ C_i = \frac{2Ei}{k_i k_{i-1}} $$
 avec
@@ -126,7 +125,38 @@ Nous avons donc décidé de partir d'un réseau dont la répartition des degrés
 \section{Planning}
 \subsection{Répartition du code}
 
-\subsection{Phases de tests}
+\subsection{Répartition du travail}
+
+\begin{center}
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|}
+\hline Fonction & Attribué à & Date de rendu \\
+\hline
+Adaptation de \verb?AlgoGen? & Marie & 03/04 \\
+\hline
+\verb?fit2distri()? & Balthazar & 31/03 \\
+\hline
+\verb?clustering()? & Marie & 01/04\\
+\hline 
+\verb?smallWorld()? & Marion & 01/04\\
+\hline
+\verb?fitness()? & Anthony & 03/04\\
+\hline 
+\verb?genome2adj()? & Balthazar & 31/03 \\
+\hline 
+\verb?graphPrint()? & Balthazar & 01/04 \\
+\hline 
+\verb?genoModif()? & Anthony & 03/04 \\
+\hline 
+\verb?robustness()? & Marion & 05/04 \\
+\hline 
+\verb?dissasortativity()? & Marion & 05/04\\
+\hline 
+\end{tabular}
+\end{table}
+\end{center}
+
+Chacun est responsable de tester les fonctions qui lui sont attribuées avant la date de rendu. Ces tests se feront sur des graphes créés avec \verb?NetworX? (manuellement et de façon automatique : scale-free, aléatoire, etc. ) et des données biologiques.
 
 \subsection{Exploitation}
 
