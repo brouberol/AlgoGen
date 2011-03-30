@@ -102,13 +102,38 @@ Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Planning}
-\subsection{Répartition du code}
 
-\subsection{Phases de tests}
+\begin{center}
+\begin{table}
+\hspace{-2cm}
+\begin{tabular}{|c|c|c|c|}
+\hline Fonction & Attribué à & Date de rendu & Test \\
+\hline
+\hline \\
+\hline \\
+\hline \\
+\\
+\hline \\
+\hline \\
+\\
+\hline
+\end{tabular}
+\caption{Répartition du code et tests}
+\label{Tab}
+\end{table}
+\end{center}
 
 \subsection{Exploitation}
+Nous commençons par tester notre code sur une population de 50 individus, chacun composé de 15 nœuds. Ceci nous permet d'approximer le temps de convergence et ainsi de mieux ma\^itriser les délais d'exploitation.
+
+Nous pouvons alors trouver un compromis entre taille de la population et nombre de nœuds dans un réseau. A priori, une population de 50 individus ayant chacun 100 nœuds nous semble un bon début. Ces paramètres seront à adapter en fonction du temps de calcul.
+
+Plusieurs simulations seront lancées en parallèle, chacune ayant des paramètres différents : taille de la population, taille d'un réseau, pondération de la fonction de \textit{fitness}, paramètre de la loi de puissance. Les résultats obtenus seront exploités en vue de déterminer leur influence respective sur la formation d'un réseau biologique.
 
 \subsection{Risques}
+Nous utilisons Python qui est un langage de haut niveau : le temps de calcul des fonctions proposées est a priori optimisé mais l'encapsulation ne permet pas sa maîtrise. De plus, nous utilisons pour la première fois le module \verb?NetworkX?. Bien que nous ne le ma\^itrisions pas parfaitement, une partie de notre code repose entièrement dessus.
+
+Il est donc à craindre une mauvaise appréhension du temps de calcul liée à la taille de la population et des réseaux ainsi qu'à l'encapsulation de nombreuses fonction \verb?Python?
 
 
 \end{document}
