@@ -39,11 +39,11 @@ Rappelons ici les propriétés générales d'un réseau biologique à valider su
 \end{itemize}
 
 \paragraph*{Paramètres de la loi de puissance\\}
-La bibiographie suggère de fixer $\gamma $ entre 2 et 3 \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à 2.1\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
+La bibiographie suggère de fixer $\gamma $ entre $2$ et $3$ \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à $2.1$\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
 
 
 \paragraph*{Propriété de petit monde \\}
-Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les nœuds dans un réseau métabolique est comprise entre 3 et 4\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
+Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les nœuds dans un réseau métabolique est comprise entre $3$ et $4$\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
   %\vspace{200pt}
@@ -92,7 +92,7 @@ Les paramètres finaux des réseaux type \og biologique \fg sont conservés afin
 
 \subsection{Fonction de \textit{fitness} }
 \label{fitness}
-La \textit{fitness} d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une \textit{fitness} maximale.
+La \textit{fitness} d'un individu est un nombre réel compris entre $0$ et $1$, $1$ correspondant à une \textit{fitness} maximale.
 Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
 
 \medskip
