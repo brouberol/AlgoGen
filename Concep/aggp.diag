@@ -1,0 +1,4 @@
+http://yuml.me/diagram/scruffy/class/draw
+
+# AGGP
+[CAlgoGen|size : integer;mutationRate : double;crossingRate : double;generationNb : integer;iGraph : list::CGraph;fGraph : list::CGraph|__init__();list::double fitness();void mutation();void crossing();void iPopCreation();void fPopChgmt();list::CGraph bestGraph()]->[CGraphe|genome : list::boolean;nbNodes : integer|__init__();double fit2distri();double clustering();double smallWorld();double fitness();void genome2adj();void graphPrint();void genoModif(CGraphe);double robustness();boolean disassortativity()]
