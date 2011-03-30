@@ -77,13 +77,30 @@ Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire
 \caption{Diagramme de classe}
 \label{diag}
 \end{figure}
-Comme le montre la figure~\ref{diag}, 
+Comme le montre la figure~\ref{diag}, notre programme se compose de 2~classes principales : la classe \textbf{CGraph} et la classe \textbf{CAlgoGen}.
 
 \subsection{Codage d'un réseau}
 % Anthony
 \subsubsection{Matrice d'adjacence}
+Afin de coder nos réseaux, nous allons nous servir d'une \textit{matrice d'adjacence} : c'est une matrice de dimension $n * n$ dont l'élément non-diagonal $a_{ij}$ est le nombre d'arêtes liant le sommet $i$ au sommet $j$. L'élément diagonal $a_{ii}$ est le nombre de boucles au sommet $i$.
+
+Notre graphe est simplifié :
+\begin{itemize}
+ \item graphe non orienté, \textit{ie.} notre matrice est diagonale ($\forall i, a_{ij}=a_{ji}$).
+ \item absence de boucle aux sommets, \textit{ie.} la diagonale est nulle ($\forall i, a_{ii}=0$)
+\end{itemize}
+
+Nous n'allons donc garder que la partie triangulaire supérieure de notre matrice d'adjacence. Cela permettra de stocker moitié moins de données.
+
 \subsubsection{Remplissage de la matrice}
+La matrice peut être générée, par \verb?NetworkX? de deux manières : soit de manière aléatoire, soit de manière "biaisée", en influençant par exemple la répartition des degrés dans le graphe de départ. En effet, on veut converger vers nos trois critères de \textit{fitness} mais ceux-ci ne sont pas tous aussi simples à atteindre. Il est par exemple assez simple de converger vers la petit monde alors que converger vers la répartition des degrés voulue est plus long.
+
+Nous avons donc décidé de partir d'un réseau dont la répartition des degrés de départ est biaisée et suit une loi exponentielle -- celle voulue.
+
+
 \subsubsection{Fonctions}
+
+\paragraph*{}
 
 \subsection{Algorithme génétique}
 %Afin de minimiser le temps de convergence, nous partons d'une distribution biaisée : la matrice est remplie selon une loi de puissance.
