@@ -96,15 +96,26 @@ La matrice peut être générée, par \verb?NetworkX? de deux manières : soit d
 
 Nous avons donc décidé de partir d'un réseau dont la répartition des degrés de départ est biaisée et suit une loi exponentielle -- celle voulue.
 
-\subsection{Fonction de \textit{fitness} }
+\subsection{Fonction de \textit{fitness}}
 \label{fitness}
 La \textit{fitness} d'un individu est un nombre réel compris entre $0$ et $1$, $1$ correspondant à une \textit{fitness} maximale.
 Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
 
 \subsubsection{Fonctions}
-\paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à  la répartition théorique voulue.
+\paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à  la répartition théorique voulue. todo (utilisation sce ou log??)
+\paragraph*{clustering()} Cette fonction récupère simplement le coefficient de \textit{clustering} renvoyé par \verb?NetworkX?
+\paragraph*{smallWorld()} Cette fonction récupère la distance moyenne entre deux nœuds renvoyée par \verb?NetworkX?
+\paragraph*{fitness()} Cette fonction calcule la \textit{fitness} de notre réseau (cf.~\ref{fitness}). La \textit{fitness} renvoyée est comprise entre $0$ et $1$.
+\paragraph*{genome2adj()} Cette fonction convertit notre génome -- suite de $0$ et de $1$ -- en matrice d'adjacence interprétable par la suite par \verb?mat2graph()?.
+\paragraph*{mat2graph()} Cette fonction fait la liaison entre notre matrice d'adjacence et \verb?NetworkX?.
+\paragraph*{graphPrint()} Cette fonction imprime notre graphe (avec légende etc.)
+\paragraph*{genoModif(CGraph)} Lorsque qu'il est nécessaire que le graphe soit modifié, cette fonction permet le changement.
+\paragraph*{robustness()} Cette fonction détermine la robustesse du graphe (cf.~\ref{algoG})
+\paragraph*{disassortativity()} Cette fonction la propriété de non-assortativité des hubs (cf.~\ref{algoG})
+
 
 \subsection{Algorithme génétique}
+\label{algoG}
 Nous utiliserons ici le module \texttt{AG.py} codée en scéances d'Optimisation. 
 
 A chaque génération, on calcule la fitness de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
@@ -115,7 +126,7 @@ Une fois la génération finale obtenue, on teste la robustesse du meilleur rés
 Cette lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
 Les paramètres finaux des réseaux type \og biologique \fg sont conservés afin de permettre un étude comparative. D'un simulation à une autre, nous feront varier la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance, ce qui nous permettra d'étudier leur impact respectif.
 
-\subsection{Fonction de \textit{fitness} }
+\subsection{Fonction de \textit{fitness}}
 \label{fitness}
 La fitness d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une fitness maximale.
 Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
