@@ -14,7 +14,6 @@ Le but de ce projet est de faire évoluer une population de réseaux grâce à u
 Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau. Celle-ci étant ici symétrique, le réseau est ainsi parfaitement représenté.
 
 \subsection{Livrables et délais}
-Nous devons produire un réseau respectant les propriétés d'un réseau biologique, et pouvoir le présenter pour le mercredi 14 avril, c'est à dire 5 semaines après le début du projet.
 
 \subsection{L'équipe}
 \begin{itemize}
@@ -37,7 +36,7 @@ Afin d'être le plus proche possible d'un réseau biologie, il convient de conna
 \begin{wrapfigure}{r}{0.5\textwidth}
   \vspace{-30pt}
   \begin{center}
-    \includegraphics[width=0.50\textwidth]{Plot.png}
+    \includegraphics[width=0.50\textwidth]{plot.png}
   \end{center}
   \caption{Réseau dont la distribution suit une loi exponentielle}
   \label{scalefree}
@@ -67,13 +66,18 @@ avec
 Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implémentation}
 % Anthony
 
 \subsection{Classes et objets}
 % Anthony
+\begin{figure}
+\includegraphics[width=\linewidth]{diagramme}
+\caption{Diagramme de classe}
+\label{diag}
+\end{figure}
+Comme le montre la figure~\ref{diag}, 
 
 \subsection{Codage d'un réseau}
 % Anthony
@@ -82,59 +86,34 @@ Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire
 \subsubsection{Fonctions}
 
 \subsection{Algorithme génétique}
-Nous utiliserons ici le module \texttt{AG.py} codée en scéances d'Optimisation. 
-
-A chaque génération, on calcule la fitness de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
-Les individus sont classés en fonction de leur \textit{fitness}. On conserve les 10\% meilleurs individus pour la nouvelle génération. Ceux-ci subissent des mutations, des croisements, étapes fondamentales de l'évolution.
-
-Une fois la génération finale obtenue, on teste la robustesse du meilleur réseau obtenu (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la propriété de non-assortativité (les hubs ne sont pas reliés entre eux).
-
-Cette lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
-Les paramètres finaux des réseaux type \og biologique \fg sont conservés afin de permettre un étude comparative. D'un simulation à une autre, nous feront varier la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance, ce qui nous permettra d'étudier leur impact respectif.
+%Afin de minimiser le temps de convergence, nous partons d'une distribution biaisée : la matrice est remplie selon une loi de puissance.
+%
+%On considère qu'un réseau est biologique s'il possède les trois propriétés suivantes :
+%\begin{itemize}
+%\item distribution des degrés selon une loi exponentielle de paramètre $2.2$\footnote{article ?} ,
+%\item "petit monde",
+%\item présence de cliques.
+%\end{itemize} 
+%
+%A chaque génération, on vérifie l'adéquation de chaque réseau avec ses caractéristiques : leur somme pondérée définit la \textit{fitness} d'un individu. Les individus sont classés en fonction de leur \textit{fitness} et sélectionnés selon le procédure suivante : ???. Ceux conservés pour la nouvelle génération subissent des mutations, des \textit{crossing-over} (et des croisements ?), étapes fondamentales de l'évolution.
+%
+%Une fois la génération finale obtenue, on teste la robustesse des réseaux (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la disassortativité (les hubs ne sont pas reliés entre eux).\\
+%
+%Cette simulation est faite plusieurs fois, sur X pas de temps (temps moyen de convergence, explication ?). Les paramètres finaux des réseaux sont conservés afin de permettre un étude comparative. D'un simulation à une autre, la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance pourront varier, ce qui permet d'étudier leur impact respectif.
 
 \subsection{Fonction de \textit{fitness} }
-\label{fitness}
-La fitness d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une fitness maximale.
-Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
-
-\medskip
-Nous pondérons cette somme pour favoriser un critère par rapport aux autres. En effet, la coexistence de propriété de petit monde et de formation de clique est fondamentalement paradoxale. Sans ce favoritisme, l'émergence de réseaux biologique est fortement freinée, voir inhibée.
-
 %Combinaison libéaire de fonction
 %Pourquoi pondérer ?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Planning}
+\subsection{Répartition du code}
 
-\begin{center}
-\begin{table}
-\hspace{-2cm}
-\begin{tabular}{|c|c|c|c|}
-\hline Fonction & Attribué à & Test & Date de rendu \\
-\hline
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-\end{tabular}
-\caption{Répartition du code et tests}
-\label{Tab}
-\end{table}
-\end{center}
+\subsection{Phases de tests}
 
 \subsection{Exploitation}
-Nous commençons par tester notre code sur une population de 50 individus, chacun composé de 15 nœuds. Ceci nous permet d'approximer le temps de convergence et ainsi de mieux ma\^itriser les délais d'exploitation.
-
-Nous pouvons alors trouver un compromis entre taille de la population et nombre de nœuds dans un réseau. A priori, une population de 50 individus ayant chacun 100 nœuds nous semble un bon début. Ces paramètres seront à adapter en fonction du temps de calcul.
-
-Plusieurs simulations seront lancées en parallèle, chacune ayant des paramètres différents : taille de la population, taille d'un réseau, pondération de la fonction de \textit{fitness}, paramètre de la loi de puissance. Les résultats obtenus seront exploités en vue de déterminer leur influence respective sur la formation d'un réseau biologique.
 
 \subsection{Risques}
-Nous utilisons Python qui est un langage de haut niveau : le temps de calcul des fonctions proposées est a priori optimisé mais l'encapsulation ne permet pas sa maîtrise. De plus, nous utilisons pour la première fois le module \verb?NetworkX?. Bien que nous ne le ma\^itrisions pas parfaitement, une partie de notre code repose entièrement dessus.
-
-Il est donc à craindre une mauvaise appréhension du temps de calcul liée à la taille de la population et des réseaux ainsi qu'à l'encapsulation de nombreuses fonction \verb?Python?.
 
 
 \end{document}
