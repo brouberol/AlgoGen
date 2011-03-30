@@ -3,6 +3,7 @@
 \begin{document}
 \maketitle
 
+L'objectif de ce document est de prévoir la conception du projet en explicitant l'organisation du code ainsi que le planning des phases de codage, de tests et d'exploitation du code. Ainsi, sa lecture devrait permettre de connaître précisément la division du projet, à la fois au niveau humain (organisation au sein de l'équipe) et temporel.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Présentation générale du projet}
@@ -12,7 +13,7 @@ Le but de ce projet est de faire évoluer une population de réseaux grâce à u
 
 Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau. Celle-ci étant ici symétrique, le réseau est ainsi parfaitement représenté.
 
-\subsection{Les difficultés}
+\subsection{Livrables et délais}
 
 \subsection{L'équipe}
 \begin{itemize}
@@ -23,36 +24,10 @@ Un individu correspondant à un réseau, le génome manipulé par l'algorithme g
 \item Groupe d'étude informatique : Balthazar Rouberol, Anthony Tschirhard, Marion Poirel, Marie Paturel
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Codage}
-
-\subsection{Principe général}
-Afin de minimiser le temps de convergence, nous partons d'une distribution biaisée/hiérarchique des degrés : la matrice est remplie selon une loi de ?????.
-
-On considère qu'un réseau est biologique s'il possède les trois propriétés suivantes :
-\begin{itemize}
-\item distribution des degrés selon une loi exponentielle de paramètre $2.2$\footnote{article ?} ,
-\item "petit monde",
-\item présence de cliques.
-\end{itemize} 
-
-A chaque génération, on vérifie l'adéquation de chaque réseau avec ses caractéristiques : leur somme pondérée définit la \textit{fitness} d'un individu. Les individus sont classés en fonction de leur \textit{fitness} et sélectionnés selon le procédure suivante : ???. Ceux conservés pour la nouvelle génération subissent des mutations, des \textit{crossing-over} (et des croisements ?), étapes fondamentales de l'évolution.
-
-Une fois la génération finale obtenue, on teste la robustesse des réseaux (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la disassortativité (les hubs ne sont pas reliés entre eux).\\
-
-Cette simulation est faite plusieurs fois, sur X pas de temps (temps moyen de convergence, explication ?). Les paramètres finaux des réseaux sont conservés afin de permettre un étude comparative. D'un simulation à une autre, la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance pourront varier, ce qui permet d'étudier leur impact respectif.
-
-\subsection{Les classes}
-%Anthony
-%diagramme
-\paragraph*{AlgoG}
-\paragraph*{Network}
 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Les grandes propriétés du réseau biologique}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Rappel sur les réseaux biologiques}
 % Anthony
 Afin d'être le plus proche possible d'un réseau biologie, il convient de connaitre ses caractéristiques et paramètres associés. Les réseaux que nous allons créer et faire évoluer vont devoir répondre à trois grandes caractéristiques : la répartition de ses degrés devra suivre une \textit{loi exponentielle}, il devra vérifier la propriété dite de \textit{\og petit monde \fg} et devra contenir des \textit{cliques}.
 
@@ -91,41 +66,49 @@ avec
 Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Implémentation de la fonction de \textit{fitness}}
-% Anthony
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\'Evolution des réseaux}
+\section{Implémentation}
 % Anthony
 
-\subsection{Mutations}
+\subsection{Classes et objets}
 % Anthony
 
-\subsection{\textit{Crossing-over}}
+\subsection{Codage d'un réseau}
 % Anthony
+\subsubsection{Matrice d'adjacence}
+\subsubsection{Remplissage de la matrice}
+\subsubsection{Fonctions}
 
+\subsection{Algorithme génétique}
+%Afin de minimiser le temps de convergence, nous partons d'une distribution biaisée : la matrice est remplie selon une loi de puissance.
+%
+%On considère qu'un réseau est biologique s'il possède les trois propriétés suivantes :
+%\begin{itemize}
+%\item distribution des degrés selon une loi exponentielle de paramètre $2.2$\footnote{article ?} ,
+%\item "petit monde",
+%\item présence de cliques.
+%\end{itemize} 
+%
+%A chaque génération, on vérifie l'adéquation de chaque réseau avec ses caractéristiques : leur somme pondérée définit la \textit{fitness} d'un individu. Les individus sont classés en fonction de leur \textit{fitness} et sélectionnés selon le procédure suivante : ???. Ceux conservés pour la nouvelle génération subissent des mutations, des \textit{crossing-over} (et des croisements ?), étapes fondamentales de l'évolution.
+%
+%Une fois la génération finale obtenue, on teste la robustesse des réseaux (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la disassortativité (les hubs ne sont pas reliés entre eux).\\
+%
+%Cette simulation est faite plusieurs fois, sur X pas de temps (temps moyen de convergence, explication ?). Les paramètres finaux des réseaux sont conservés afin de permettre un étude comparative. D'un simulation à une autre, la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance pourront varier, ce qui permet d'étudier leur impact respectif.
 
-%%%%%%%%%%%%%%%%
-\section{Codage}
+\subsection{Fonction de \textit{fitness} }
+%Combinaison libéaire de fonction
+%Pourquoi pondérer ?
 
-\subsection{Principe général}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Planning}
+\subsection{Répartition du code}
 
-\subsection{Les classes}
-%Anthony
-%diagramme
-\paragraph*{La classe \textit{Graphe}\\}
+\subsection{Phases de tests}
 
-\paragraph*{La classe \textit{Graphe}\\}
+\subsection{Exploitation}
 
+\subsection{Risques}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Répartition des tâches et planning}
-% Marion
-
-
-%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}
 
 \end{document}
