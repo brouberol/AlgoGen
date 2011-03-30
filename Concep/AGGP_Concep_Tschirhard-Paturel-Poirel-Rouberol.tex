@@ -11,10 +11,10 @@ L'objectif de ce document est de prévoir la conception du projet en explicitant
 \subsection{Algorithme génétique}
 Le but de ce projet est de faire évoluer une population de réseaux grâce à un algorithme génétique pré-existant. Nous devons définir une \textit{fitness} qui permet de sélectionner les individus sur leurs capacités à s'approcher d'un réseau biologique.
 
-Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau. Celle-ci étant ici symétrique, le réseau est ainsi parfaitement représenté.
+Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau.
 
 \subsection{Livrables et délais}
-Nous devons produire un réseau respectant les propriétés d'un réseau biologique, et pouvoir le présenter pour le mercredi 13 avril, c'est à dire 5 semaines après le début du projet.
+Nous devons produire un réseau respectant les propriétés d'un réseau biologique, et pouvoir le présenter pour le mercredi 13 avril, c'est-à-dire 5 semaines après le début du projet.
 
 \subsection{L'équipe}
 \begin{itemize}
@@ -32,7 +32,7 @@ Nous devons produire un réseau respectant les propriétés d'un réseau biologi
 
 
 \subsection{Rappels}
-Rappellons ici les propriétés générales d'un réseau biologique à valider par les réseaux à générer :
+Rappelons ici les propriétés générales d'un réseau biologique à valider par les réseaux à générer :
 \begin{itemize}
 	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) ~ \alpha k^{-\gamma} $, traduisant la faible présence de nœuds ultraconnectés : les hubs
 	\item validation de la propriété de \og petit monde\fg
@@ -41,7 +41,7 @@ Rappellons ici les propriétés générales d'un réseau biologique à valider p
 
 \subsection{Tests et paramètres}
 \paragraph*{Paramètres de la loi de puissance\\}
-La bibiographie suggère de fixer $\gamma $ entre $2$ et $3$ \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à $2.1$\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
+La bibliographie suggère de fixer $\gamma $ entre $2$ et $3$ \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à $2.1$\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
 
 
 \paragraph*{Propriété de petit monde \\}
@@ -57,14 +57,14 @@ Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. 
 \end{wrapfigure}
 \paragraph*{Formation de cliques\\}
 
-Un graphe compte un certain nombre de cliques de différentes tailles. Une clique est un ensemble de nœuds entièrement interconnectés. Le coefficient de clustering est un bon indicateur de la présence de cliques et se calcule pour chaque nœud de la manière suivante :
+Un graphe compte un certain nombre de cliques de différentes tailles. Une clique est un ensemble de nœuds entièrement interconnectés. Le coefficient de \textit{clustering} est un bon indicateur de la présence de cliques et se calcule pour chaque nœud de la manière suivante :
 $$ C_i = \frac{2Ei}{k_i k_{i-1}} $$
 avec
 \begin{itemize}
  \item $E_i$ : nombre de liens entre voisins ;
  \item $k_i$ : nombre de voisins de $i$.
 \end{itemize}
-Nous allons utiliser le coefficient de clustering global, c'est-à-dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
+Nous allons utiliser le coefficient de \textit{clustering} global, c'est-à-dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,25 +83,27 @@ Comme le montre la figure~\ref{diag}, notre programme se compose de 2~classes pr
 \subsection{Codage d'un réseau}
 % Anthony
 \subsubsection{Matrice d'adjacence}
-Afin de coder nos réseaux, nous allons nous servir d'une \textit{matrice d'adjacence} : c'est une matrice de dimension $n * n$ dont l'élément non-diagonal $a_{ij}$ est le nombre d'arêtes liant le sommet $i$ au sommet $j$. L'élément diagonal $a_{ii}$ est le nombre de boucles au sommet $i$.
+Afin de coder nos réseaux, nous allons nous servir d'une matrice d'adjacence : c'est une matrice de dimension $n * n$ dont l'élément non-diagonal $a_{ij}$ est le nombre d'arêtes liant le sommet $i$ au sommet $j$. L'élément diagonal $a_{ii}$ est le nombre de boucles au sommet $i$.
 
 Notre graphe est simplifié :
 \begin{itemize}
- \item graphe non orienté, \textit{ie.} notre matrice est diagonale ($\forall i, a_{ij}=a_{ji}$).
+ \item graphe non orienté, \textit{ie.} notre matrice est diagonale ($\forall i, a_{ij}=a_{ji}$),
  \item absence de boucle aux sommets, \textit{ie.} la diagonale est nulle ($\forall i, a_{ii}=0$)
 \end{itemize}
 
 \subsubsection{Remplissage de la matrice}
 La matrice peut être générée, par \verb?NetworkX? de deux manières : soit de manière aléatoire, soit de manière "biaisée", en influençant par exemple la répartition des degrés dans le graphe de départ. En effet, on veut converger vers nos trois critères de \textit{fitness} mais ceux-ci ne sont pas tous aussi simples à atteindre. Il est par exemple assez simple de converger vers la petit monde alors que converger vers la répartition des degrés voulue est plus long.
 
-Nous avons donc décidé de partir d'un réseau dont la répartition des degrés de départ est biaisée et suit une loi exponentielle -- celle voulue.
+Nous avons donc décidé de partir d'un réseau dont la répartition des degrés de départ est biaisée et suit une loi de puissance -- celle voulue.
 
 \subsection{Fonction de \textit{fitness}}
 \label{fitness}
 La \textit{fitness} d'un individu est un nombre réel compris entre $0$ et $1$, $1$ correspondant à une \textit{fitness} maximale.
-Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
+Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{clustering()}, \texttt{fit2distri()}, et \texttt{smallWorld()}, testant l'adéquation du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
 
 \subsubsection{Fonctions}
+
+\paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à la répartition théorique voulue.
 \paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à  la répartition théorique voulue. todo (utilisation sce ou log??)
 \paragraph*{clustering()} Cette fonction récupère simplement le coefficient de \textit{clustering} renvoyé par \verb?NetworkX?
 \paragraph*{smallWorld()} Cette fonction récupère la distance moyenne entre deux nœuds renvoyée par \verb?NetworkX?
@@ -125,26 +127,24 @@ Parmi les individus sélectionnés à chaque génération -- ceux ayant la meill
 \label{algoG}
 Nous utiliserons ici le module \texttt{AG.py} codée en scéances d'Optimisation. 
 
-A chaque génération, on calcule la fitness de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
+A chaque génération, on calcule la \textit{fitness} de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
 Les individus sont classés en fonction de leur \textit{fitness}. On conserve les 10\% meilleurs individus pour la nouvelle génération. Ceux-ci subissent des mutations, des croisements, étapes fondamentales de l'évolution.
 
-Une fois la génération finale obtenue, on teste la robustesse du meilleur réseau obtenu (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la propriété de non-assortativité (les hubs ne sont pas reliés entre eux).
+Une fois la génération finale obtenue, on teste la robustesse du meilleur réseau obtenu (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la propriété de non-assortativité\footnote{Structure of biological, Presentation by Atanas Kamburov, 08.05.2007} (les hubs ne sont pas reliés entre eux).
 
-Cette lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
+On lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
 Les paramètres finaux des réseaux type \og biologique \fg sont conservés afin de permettre un étude comparative. D'un simulation à une autre, nous feront varier la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance, ce qui nous permettra d'étudier leur impact respectif.
 
 \subsection{Fonction de \textit{fitness}}
 \label{fitness}
-La fitness d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une fitness maximale.
-Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
+La textit{fitness} d'un individu est un nombre réel compris entre $0$ et $1$, $1$ correspondant à une textit{fitness} maximale.
+Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{clustering()}, \texttt{fit2distri()}, et \texttt{smallWorld()}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
 
 \medskip
 Nous pondérons cette somme pour favoriser un critère par rapport aux autres. En effet, la coexistence de propriété de petit monde et de formation de clique est fondamentalement paradoxale. Sans ce favoritisme, l'émergence de réseaux biologique est fortement freinée, voir inhibée.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Planning}
-\subsection{Répartition du code}
-
 \subsection{Répartition du travail}
 
 \begin{center}
