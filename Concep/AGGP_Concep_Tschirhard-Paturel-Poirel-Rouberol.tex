@@ -31,9 +31,9 @@ Nous devons produire un réseau respectant les propriétés d'un réseau biologi
 \section{Rappel sur les réseaux biologiques}
 % Anthony
 
-Rappellons ici les propriétés générales d'un réseau biologique à valider par les réseaux à générer :
+Rappelons ici les propriétés générales d'un réseau biologique à valider sur les réseaux générés :
 \begin{itemize}
-	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) ~ \alpha k^{-\gamma} $, traduisant la faible présence de noeuds ultraconnectés : les hubs
+	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) ~ \alpha k^{-\gamma} $, traduisant la faible présence de nœuds ultraconnectés : les hubs
 	\item validation de la propriété de \og petit monde\fg
 	\item formation de cliques 
 \end{itemize}
@@ -43,7 +43,7 @@ La bibiographie suggère de fixer $\gamma $ entre 2 et 3 \footnote{Network biolo
 
 
 \paragraph*{Propriété de petit monde \\}
-Cette propriété traduit le fait que tous les noeuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les noeuds dans un réseau métabolique est comprise entre 3 et 4\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
+Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les nœuds dans un réseau métabolique est comprise entre 3 et 4\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
   %\vspace{200pt}
@@ -55,14 +55,14 @@ Cette propriété traduit le fait que tous les noeuds d'un graphe sont reliés. 
 \end{wrapfigure}
 \paragraph*{Formation de cliques\\}
 
-Un graphe compte un certain nombre de \textbf{cliques} de différentes tailles. Une clique est un ensemble de nœuds entièrement interconnectés. Le \textbf{coefficient de clustering} est un bon indicateur de la présence de cliques et se calcule pour chaque nœud de la manière suivante :
+Un graphe compte un certain nombre de cliques de différentes tailles. Une clique est un ensemble de nœuds entièrement interconnectés. Le coefficient de clustering est un bon indicateur de la présence de cliques et se calcule pour chaque nœud de la manière suivante :
 $$ C_i = \frac{2Ei}{k_i k_{i-1}} $$
 avec
 \begin{itemize}
  \item $E_i$ : nombre de liens entre voisins ;
  \item $k_i$ : nombre de voisins de $i$.
 \end{itemize}
-Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
+Nous allons utiliser le coefficient de clustering global, c'est-à-dire la moyenne des coefficients de chaque nœud. Ainsi, nous aurons une valeur comprise entre $0$ et $1$ que nous pourrons utiliser dans notre fonction de \textit{fitness}.
 
 
 
@@ -82,18 +82,18 @@ Nous allons utiliser le coefficient de \textit{clustering} global, c'est à dire
 \subsection{Algorithme génétique}
 Nous utiliserons ici le module \texttt{AG.py} codée en scéances d'Optimisation. 
 
-A chaque génération, on calcule la fitness de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
+A chaque génération, on calcule la \textit{fitness} de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
 Les individus sont classés en fonction de leur \textit{fitness}. On conserve les 10\% meilleurs individus pour la nouvelle génération. Ceux-ci subissent des mutations, des croisements, étapes fondamentales de l'évolution.
 
 Une fois la génération finale obtenue, on teste la robustesse du meilleur réseau obtenu (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la propriété de non-assortativité (les hubs ne sont pas reliés entre eux).
 
-Cette lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
+On lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
 Les paramètres finaux des réseaux type \og biologique \fg sont conservés afin de permettre un étude comparative. D'un simulation à une autre, nous feront varier la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance, ce qui nous permettra d'étudier leur impact respectif.
 
 \subsection{Fonction de \textit{fitness} }
 \label{fitness}
-La fitness d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une fitness maximale.
-Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
+La \textit{fitness} d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une \textit{fitness} maximale.
+Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
 
 \medskip
 Nous pondérons cette somme pour favoriser un critère par rapport aux autres. En effet, la coexistence de propriété de petit monde et de formation de clique est fondamentalement paradoxale. Sans ce favoritisme, l'émergence de réseaux biologique est fortement freinée, voir inhibée.
@@ -109,7 +109,7 @@ Nous pondérons cette somme pour favoriser un critère par rapport aux autres. E
 \begin{center}
 \begin{table}[!h]
 \begin{tabular}{|c|c|c|}
-\hline Fonction & Attribué à & Date de rendu \\
+\hline \textbf{Fonction} & \textbf{Attribué à} & \textbf{Date de rendu} \\
 \hline
 Adaptation de \verb?AlgoGen? & Marie & 03/04 \\
 \hline
@@ -142,10 +142,10 @@ Nous commençons par tester notre code sur une population de 50 individus, chacu
 
 Nous pouvons alors trouver un compromis entre taille de la population et nombre de nœuds dans un réseau. A priori, une population de 50 individus ayant chacun 100 nœuds nous semble un bon début. Ces paramètres seront à adapter en fonction du temps de calcul.
 
-Plusieurs simulations seront lancées en parallèle, chacune ayant des paramètres différents : taille de la population, taille d'un réseau, pondération de la fonction de \textit{fitness}, paramètre de la loi de puissance. Les résultats obtenus seront exploités en vue de déterminer leur influence respective sur la formation d'un réseau biologique.
+Après avoir lancé une simulation, Plusieurs simulations seront lancées en parallèle, chacune ayant des paramètres différents : taille de la population, taille d'un réseau, pondération de la fonction de \textit{fitness}, paramètre de la loi de puissance. Les résultats obtenus seront exploités en vue de déterminer leur influence respective sur la formation d'un réseau biologique.
 
 \subsection{Risques}
-Nous utilisons Python qui est un langage de haut niveau : le temps de calcul des fonctions proposées est a priori optimisé mais l'encapsulation ne permet pas sa maîtrise. De plus, nous utilisons pour la première fois le module \verb?NetworkX?. Bien que nous ne le ma\^itrisions pas parfaitement, une partie de notre code repose entièrement dessus.
+Nous utilisons Python qui est un langage de haut niveau : le temps de calcul des fonctions proposées est a priori optimisé mais l'encapsulation ne permet pas sa maîtrise. De plus, nous utilisons pour la première fois le module \verb?NetworkX?. Bien que nous ne le ma\^itrisions pas parfaitement, une partie de notre code repose entièrement dessus. Nous ne connaissons donc pas les performances calcul de ce module.
 
 Il est donc à craindre une mauvaise appréhension du temps de calcul liée à la taille de la population et des réseaux ainsi qu'à l'encapsulation de nombreuses fonction \verb?Python?.
 
