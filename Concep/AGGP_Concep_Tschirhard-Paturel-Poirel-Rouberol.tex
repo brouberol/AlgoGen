@@ -50,7 +50,7 @@ Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. 
 \begin{wrapfigure}{r}{0.45\textwidth}
   \vspace{-30pt}
   \begin{center}
-    \includegraphics[width=0.50\textwidth]{plot.png}
+    \includegraphics[width=0.50\textwidth]{Plot.png}
   \end{center}
   \caption{Distribution puissances limites}
   \label{scalefree}
@@ -105,24 +105,23 @@ Celle-ci est calculée comme une somme linéaire pondérée des résultats renvo
 \paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à  la répartition théorique voulue.
 
 \subsection{Algorithme génétique}
-%Afin de minimiser le temps de convergence, nous partons d'une distribution biaisée : la matrice est remplie selon une loi de puissance.
-%
-%On considère qu'un réseau est biologique s'il possède les trois propriétés suivantes :
-%\begin{itemize}
-%\item distribution des degrés selon une loi exponentielle de paramètre $2.2$\footnote{article ?} ,
-%\item "petit monde",
-%\item présence de cliques.
-%\end{itemize} 
-%
-%A chaque génération, on vérifie l'adéquation de chaque réseau avec ses caractéristiques : leur somme pondérée définit la \textit{fitness} d'un individu. Les individus sont classés en fonction de leur \textit{fitness} et sélectionnés selon le procédure suivante : ???. Ceux conservés pour la nouvelle génération subissent des mutations, des \textit{crossing-over} (et des croisements ?), étapes fondamentales de l'évolution.
-%
-%Une fois la génération finale obtenue, on teste la robustesse des réseaux (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la disassortativité (les hubs ne sont pas reliés entre eux).\\
-%
-%Cette simulation est faite plusieurs fois, sur X pas de temps (temps moyen de convergence, explication ?). Les paramètres finaux des réseaux sont conservés afin de permettre un étude comparative. D'un simulation à une autre, la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance pourront varier, ce qui permet d'étudier leur impact respectif.
+Nous utiliserons ici le module \texttt{AG.py} codée en scéances d'Optimisation. 
+
+A chaque génération, on calcule la fitness de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
+Les individus sont classés en fonction de leur \textit{fitness}. On conserve les 10\% meilleurs individus pour la nouvelle génération. Ceux-ci subissent des mutations, des croisements, étapes fondamentales de l'évolution.
+
+Une fois la génération finale obtenue, on teste la robustesse du meilleur réseau obtenu (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la propriété de non-assortativité (les hubs ne sont pas reliés entre eux).
+
+Cette lancera cette simulation plusieurs fois afin de mesurer le temps moyen de convergence.
+Les paramètres finaux des réseaux type \og biologique \fg sont conservés afin de permettre un étude comparative. D'un simulation à une autre, nous feront varier la pondération des paramètres de la loi de \textit{fitness} et le degré de la loi de puissance, ce qui nous permettra d'étudier leur impact respectif.
 
 \subsection{Fonction de \textit{fitness} }
-%Combinaison libéaire de fonction
-%Pourquoi pondérer ?
+\label{fitness}
+La fitness d'un individu est un nombre réel compris entre 0 et 1, 1 correspondant à une fitness maximale.
+Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{}, \texttt{}, et \texttt{}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
+
+\medskip
+Nous pondérons cette somme pour favoriser un critère par rapport aux autres. En effet, la coexistence de propriété de petit monde et de formation de clique est fondamentalement paradoxale. Sans ce favoritisme, l'émergence de réseaux biologique est fortement freinée, voir inhibée.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Planning}
