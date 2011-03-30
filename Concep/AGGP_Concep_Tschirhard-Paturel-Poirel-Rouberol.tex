@@ -28,9 +28,9 @@ Nous devons produire un réseau respectant les propriétés d'un réseau biologi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Rappel sur les réseaux biologiques}
-% Anthony
+\section{Propriétés des réseaux biologiques}
 
+\subsection{Rappels}
 Rappellons ici les propriétés générales d'un réseau biologique à valider par les réseaux à générer :
 \begin{itemize}
 	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) ~ \alpha k^{-\gamma} $, traduisant la faible présence de noeuds ultraconnectés : les hubs
@@ -38,6 +38,7 @@ Rappellons ici les propriétés générales d'un réseau biologique à valider p
 	\item formation de cliques 
 \end{itemize}
 
+\subsection{Tests et paramètres}
 \paragraph*{Paramètres de la loi de puissance\\}
 La bibiographie suggère de fixer $\gamma $ entre 2 et 3 \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à 2.1\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
 
@@ -46,7 +47,7 @@ La bibiographie suggère de fixer $\gamma $ entre 2 et 3 \footnote{Network biolo
 Cette propriété traduit le fait que tous les noeuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les noeuds dans un réseau métabolique est comprise entre 3 et 4\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
-  %\vspace{200pt}
+  \vspace{-30pt}
   \begin{center}
     \includegraphics[width=0.50\textwidth]{plot.png}
   \end{center}
