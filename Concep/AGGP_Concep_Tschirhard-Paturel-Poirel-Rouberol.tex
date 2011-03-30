@@ -11,8 +11,6 @@ L'objectif de ce document est de prévoir la conception du projet en explicitant
 \subsection{Algorithme génétique}
 Le but de ce projet est de faire évoluer une population de réseaux grâce à un algorithme génétique pré-existant. Nous devons définir une \textit{fitness} qui permet de sélectionner les individus sur leurs capacités à s'approcher d'un réseau biologique.
 
-Un individu correspondant à un réseau, le génome manipulé par l'algorithme génétique est une concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence du réseau.
-
 \subsection{Livrables et délais}
 Nous devons produire un réseau respectant les propriétés d'un réseau biologique, et pouvoir le présenter pour le mercredi 13 avril, c'est-à-dire 5 semaines après le début du projet.
 
@@ -34,18 +32,18 @@ Nous devons produire un réseau respectant les propriétés d'un réseau biologi
 \subsection{Rappels}
 Rappelons ici les propriétés générales d'un réseau biologique à valider par les réseaux à générer :
 \begin{itemize}
-	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) ~ \alpha k^{-\gamma} $, traduisant la faible présence de nœuds ultraconnectés : les hubs
+	\item la répartition de ses degrés devra suivre une loi de puissance $ P(k) \sim \alpha k^{-\gamma} $, traduisant la faible présence de nœuds ultraconnectés : les hubs
 	\item validation de la propriété de \og petit monde\fg
 	\item formation de cliques 
 \end{itemize}
 
 \subsection{Tests et paramètres}
 \paragraph*{Paramètres de la loi de puissance\\}
-La bibliographie suggère de fixer $\gamma $ entre $2$ et $3$ \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à $2.1$\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure \ref{scalefree}, la différence de distribution est relativement faible. Nous décidons donc de fixer $\gamma$ à $2.1$.
+La bibliographie suggère de fixer $\gamma $ entre $2$ et $3$ \footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004} ou de le fixer à $2.1$\footnote{Exploring complex networks - S. Strogatz - Nature Vol 410 - March 2001}. Comme visible sur la figure~\ref{scalefree}, la différence de distribution est relativement faible entre les deux valeurs extrêmes. Nous décidons donc de fixer $\gamma$ à $2.1$.
 
-
+\newpage
 \paragraph*{Propriété de petit monde \\}
-Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. La valeur de la longueur de moyenne entre les nœuds dans un réseau métabolique est comprise entre $3$ et $4$\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
+Cette propriété traduit le fait que tous les nœuds d'un graphe sont reliés. La valeur de la longueur moyenne entre les nœuds dans un réseau métabolique est comprise entre $3$ et $4$\footnote{Network biology : Understanding the cell's functional organization - A. Barbab\'{a}si \& Z. Oltvai - Nature reviews - Genetics - Feb 2004}. Nous décidons donc de conserver cette condition et de l'appliquer aux réseaux générés.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
   \vspace{-30pt}
@@ -73,7 +71,7 @@ Nous allons utiliser le coefficient de \textit{clustering} global, c'est-à-dire
 
 \subsection{Classes et objets}
 % Anthony
-\begin{figure}
+\begin{figure}[h!]
 \includegraphics[width=\linewidth]{diagramme}
 \caption{Diagramme de classe}
 \label{diag}
@@ -83,7 +81,8 @@ Comme le montre la figure~\ref{diag}, notre programme se compose de 2~classes pr
 \subsection{Codage d'un réseau}
 % Anthony
 \subsubsection{Matrice d'adjacence}
-Afin de coder nos réseaux, nous allons nous servir d'une matrice d'adjacence : c'est une matrice de dimension $n * n$ dont l'élément non-diagonal $a_{ij}$ est le nombre d'arêtes liant le sommet $i$ au sommet $j$. L'élément diagonal $a_{ii}$ est le nombre de boucles au sommet $i$.
+Afin de coder nos réseaux, nous allons nous servir d'une matrice d'adjacence : une matrice de dimension $n * n$ dont l'élément non-diagonal $a_{ij}$ est le nombre d'arêtes liant le sommet $i$ au sommet $j$. L'élément diagonal $a_{ii}$ est le nombre de boucles au sommet $i$.
+\medskip
 
 Notre graphe est simplifié :
 \begin{itemize}
@@ -96,15 +95,11 @@ La matrice peut être générée, par \verb?NetworkX? de deux manières : soit d
 
 Nous avons donc décidé de partir d'un réseau dont la répartition des degrés de départ est biaisée et suit une loi de puissance -- celle voulue.
 
-\subsection{Fonction de \textit{fitness}}
-\label{fitness}
-La \textit{fitness} d'un individu est un nombre réel compris entre $0$ et $1$, $1$ correspondant à une \textit{fitness} maximale.
-Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{clustering()}, \texttt{fit2distri()}, et \texttt{smallWorld()}, testant l'adéquation du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
+Nous nous servirons donc de la concaténation des lignes de la partie triangulaire supérieure de la matrice d'adjacence pour modéliser le "génome" d'un réseau.
 
 \subsubsection{Fonctions}
 
-\paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à la répartition théorique voulue.
-\paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à  la répartition théorique voulue. todo (utilisation sce ou log??)
+\paragraph*{fit2distri()} Cette fonction permet de voir si notre répartition de degré correspond bien à la répartition théorique voulue (en utilisant la somme des carrés des écarts à la distribution attendue).
 \paragraph*{clustering()} Cette fonction récupère simplement le coefficient de \textit{clustering} renvoyé par \verb?NetworkX?
 \paragraph*{smallWorld()} Cette fonction récupère la distance moyenne entre deux nœuds renvoyée par \verb?NetworkX?
 \paragraph*{fitness()} Cette fonction calcule la \textit{fitness} de notre réseau (cf.~\ref{fitness}). La \textit{fitness} renvoyée est comprise entre $0$ et $1$.
@@ -116,18 +111,11 @@ Celle-ci est calculée comme une somme linéaire pondérée des résultats renvo
 \paragraph*{disassortativity()} Cette fonction la propriété de non-assortativité des hubs (cf.~\ref{algoG})
 
 
-\subsection{Évolution des réseaux}
-\subsubsection{Mutation}
-On va faire évoluer nos réseaux en mutant certains individus pris au hasard dans la population. Ces mutations se caractériseront par des changements $0$/$1$ au sein de la matrice d'adjacence. Il conviendra de déterminer avec logique la fréquence de ces mutations.
-
-\subsubsection{\textit{Crossing-over}}
-Parmi les individus sélectionnés à chaque génération -- ceux ayant la meilleur \textit{fitness} -- on va effectuer des crossing-over de manière aléatoire. Encore un fois, il faudra déterminer intelligemment leur taux et fréquence.
-
 \subsection{Algorithme génétique}
 \label{algoG}
 Nous utiliserons ici le module \texttt{AG.py} codée en scéances d'Optimisation. 
 
-A chaque génération, on calcule la \textit{fitness} de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
+À chaque génération, on calcule la \textit{fitness} de chaque individu, qui est définie par une combinaison linéaire de coefficients témoignant de leur adéquation aux propriétés d'un réseau biologique (cf section \ref{fitness}).
 Les individus sont classés en fonction de leur \textit{fitness}. On conserve les 10\% meilleurs individus pour la nouvelle génération. Ceux-ci subissent des mutations, des croisements, étapes fondamentales de l'évolution.
 
 Une fois la génération finale obtenue, on teste la robustesse du meilleur réseau obtenu (conservation des propriétés malgré la suppression au hasard d'un nœud) ainsi que leur concordance avec la propriété de non-assortativité\footnote{Structure of biological, Presentation by Atanas Kamburov, 08.05.2007} (les hubs ne sont pas reliés entre eux).
@@ -141,14 +129,24 @@ La textit{fitness} d'un individu est un nombre réel compris entre $0$ et $1$, $
 Celle-ci est calculée comme une somme linéaire pondérée des résultats renvoyés par les fonctions \texttt{clustering()}, \texttt{fit2distri()}, et \texttt{smallWorld()}, testant l'adéquation des du réseau aux paramètres principaux d'un réseau biologique : formation de cliques, distribution des degrés selon une loi de puissance et propriété de petit monde.
 
 \medskip
-Nous pondérons cette somme pour favoriser un critère par rapport aux autres. En effet, la coexistence de propriété de petit monde et de formation de clique est fondamentalement paradoxale. Sans ce favoritisme, l'émergence de réseaux biologique est fortement freinée, voir inhibée.
+Nous pondérons cette somme pour favoriser un critère par rapport aux autres. En effet, la coexistence de propriété de petit monde et de formation de cliques est fondamentalement paradoxale. Sans ce favoritisme, l'émergence de réseaux biologique est fortement freinée, voir inhibée.
+
+\subsection{Évolution des réseaux}
+\subsubsection{Mutation}
+On va faire évoluer nos réseaux en mutant certains individus pris au hasard dans la population. Ces mutations se caractériseront par des changements $0$/$1$ au sein de la matrice d'adjacence. Il conviendra de déterminer avec logique la fréquence de ces mutations.
+
+\subsubsection{\textit{Crossing-over}}
+Parmi les individus sélectionnés à chaque génération -- ceux ayant la meilleur \textit{fitness} -- on va effectuer des crossing-over de manière aléatoire. Encore un fois, il faudra déterminer intelligemment leur taux et fréquence.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section{Planning}
 \subsection{Répartition du travail}
 
 \begin{center}
 \begin{table}[!h]
+\centering
 \begin{tabular}{|c|c|c|}
 \hline \textbf{Fonction} & \textbf{Attribué à} & \textbf{Date de rendu} \\
 \hline
@@ -176,7 +174,7 @@ Adaptation de \verb?AlgoGen? & Marie & 03/04 \\
 \end{table}
 \end{center}
 
-Chacun est responsable de tester les fonctions qui lui sont attribuées avant la date de rendu. Ces tests se feront sur des graphes créés avec \verb?NetworX? (manuellement et de façon automatique : scale-free, aléatoire, etc. ) et des données biologiques.
+Chacun est responsable de tester les fonctions qui lui sont attribuées avant la date de rendu. Ces tests se feront sur des graphes créés avec \verb?NetworX? (manuellement et de façon automatique : scale-free, aléatoire, etc. ).
 
 \subsection{Exploitation}
 
@@ -184,7 +182,7 @@ Nous commençons par tester notre code sur une population de 50 individus, chacu
 
 Nous pouvons alors trouver un compromis entre taille de la population et nombre de nœuds dans un réseau. A priori, une population de 50 individus ayant chacun 100 nœuds nous semble un bon début. Ces paramètres seront à adapter en fonction du temps de calcul.
 
-Après avoir lancé une simulation, Plusieurs simulations seront lancées en parallèle, chacune ayant des paramètres différents : taille de la population, taille d'un réseau, pondération de la fonction de \textit{fitness}, paramètre de la loi de puissance. Les résultats obtenus seront exploités en vue de déterminer leur influence respective sur la formation d'un réseau biologique.
+Après avoir lancé une simulation, plusieurs seront lancées en parallèle, chacune ayant des paramètres différents : taille de la population, taille d'un réseau, pondération de la fonction de \textit{fitness}, paramètre de la loi de puissance. Les résultats obtenus seront exploités en vue de déterminer leur influence respective sur la formation d'un réseau biologique.
 
 \subsection{Risques}
 Nous utilisons Python qui est un langage de haut niveau : le temps de calcul des fonctions proposées est a priori optimisé mais l'encapsulation ne permet pas sa maîtrise. De plus, nous utilisons pour la première fois le module \verb?NetworkX?. Bien que nous ne le ma\^itrisions pas parfaitement, une partie de notre code repose entièrement dessus. Nous ne connaissons donc pas les performances calcul de ce module.
