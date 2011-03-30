@@ -107,22 +107,38 @@ Nous pondérons cette somme pour favoriser un critère par rapport aux autres. E
 \section{Planning}
 
 \begin{center}
-\begin{table}
+\begin{table}[!h]
 \hspace{-2cm}
-\begin{tabular}{|c|c|c|c|}
-\hline Fonction & Attribué à & Test & Date de rendu \\
+\begin{tabular}{|c|c|c|}
+\hline Fonction & Attribué à & Date de rendu \\
 \hline
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-\hline \\
+Adaptation de \verb?AlgoGen? & Marie & 03/04 \\
+\hline
+\verb?fit2distri()? & Balthazar & 31/03 \\
+\hline
+\verb?clustering()? & Marie & 01/04\\
+\hline 
+\verb?smallWorld()? & Marion & 01/04\\
+\hline
+\verb?fitness()? & Anthony & 03/04\\
+\hline 
+\verb?genome2adj()? & Balthazar & 31/03 \\
+\hline 
+\verb?graphPrint()? & Balthazar & 01/04 \\
+\hline 
+\verb?genoModif()? & Anthony & 03/04 \\
+\hline 
+\verb?robustness()? & Marion & 05/04 \\
+\hline 
+\verb?dissasortativity()? & Marion & 05/04\\
+\hline 
 \end{tabular}
 \caption{Répartition du code et tests}
 \label{Tab}
 \end{table}
 \end{center}
+
+Chacun est responsable de tester les fonctions qui lui sont attribuées avant la date de rendu. Ces tests se feront sur des graphes créés avec \verb?NetworX? (manuellement et de façon automatique : scale-free, aléatoire, etc. ) et des données biologiques.
 
 \subsection{Exploitation}
 Nous commençons par tester notre code sur une population de 50 individus, chacun composé de 15 nœuds. Ceci nous permet d'approximer le temps de convergence et ainsi de mieux ma\^itriser les délais d'exploitation.
