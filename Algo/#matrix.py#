@@ -13,6 +13,7 @@ for i in (range(size)):
 	for j in range(size):
 		if i==j : 	#Pour mettre 0 sur la diag
 			A[i,j]=0
+
 		else :	A[i,j] = A[j,i] = random.randint(0,2)
 
 """ Creation du graphe a partir de la matrice d'adjacence """	
