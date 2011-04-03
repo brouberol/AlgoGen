@@ -34,6 +34,7 @@ class pyAG:
 	self.prod=prod
 	self.pop=[prod() for i in range(N)]
 	self.gen = 0
+
     def calc_fitness(self):
 	self.f=[]
 	self.fitm=0

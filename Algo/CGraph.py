@@ -39,6 +39,8 @@ class CGraph:
             li.insert(0,0)
             self.genome += li
 
+        self.createGraph()
+
 
 
     def fit2distri(self):
@@ -46,37 +48,40 @@ class CGraph:
     Compris entre 0 et 1 """
 
         ThDistrib = [] # Distribution theorique
+        connexions = self.graph.degree().values()
+        deg = range(max(connexions))
+        eff = [connexions.count(x) for x in range(max(connexions))]
+
         
-        for x in self.graph.degree().keys():
+
+        for x in deg: # No des noeuds
             if x!=0:
                 ThDistrib.append(self.nbNodes*x**(-2.2))
         res = 0      
         for i in range(len(ThDistrib)):
-            d = abs(self.graph.degree(i+1) - ThDistrib[i])
+            d = abs(eff[i+1] - ThDistrib[i])
             res += d/(d+ThDistrib[i])            
 
         # TMP
-        Deg = self.graph.degree().keys()
-        Val = self.graph.degree().values()
-        plt.figure()
-        plt.plot(Deg[1:],Val[1:],'ro-') #in-degree
-        plt.xlabel('Degree')
-        plt.ylabel('Number of nodes')
-        plt.title('Degree distribution')
+        # Deg = self.graph.degree().keys()
+        # Val = self.graph.degree().values()
+        # plt.figure()
+        # plt.plot(Deg[1:],Val[1:],'ro-') #in-degree
+        # plt.xlabel('Degree')
+        # plt.ylabel('Number of nodes')
+        # plt.title('Degree distribution')
 
-        for x in Deg:
-                if x!=0:
-                        plt.scatter(x,self.nbNodes*x**(-2.2),c="blue")
+        # for x in Deg:
+        #         if x!=0:
+        #                 plt.scatter(x,self.nbNodes*x**(-2.2),c="blue")
 
-        plt.savefig('DegreeDistrib.png')
-        plt.close()
+        # plt.savefig('DegreeDistrib.png')
+        # plt.close()
 
         # ATTENTION : lorsqu'on converge vers un scale-free: queue de distrib
         # tendant vers 0 : avg_res tend vers 1 !
         return res/self.nbNodes
     
-
-
 
     def clustering(self):
         """ Renvoie le coeff de clustering moyen """
@@ -88,7 +93,7 @@ class CGraph:
         return abs((nx.average_shortest_path_length(self.graph)-2.5)/(nx.average_shortest_path_length(self.graph)))
                                                                   
     def fitness(self,a,b,c):
-        return (a*self.fit2distrib() + b*self.clustering() + c*self.smallWorld())/(a+b+c)
+        return (a*self.fit2distri() + b*self.clustering() + c*self.smallWorld())/(a+b+c)
 
     def genome2adj(self):
          """ Remplissage et creation de la matrice d'adjacence """
@@ -104,7 +109,7 @@ class CGraph:
 
          return Adj
 
-    def drawGraph(self): 
+    def createGraph(self):
         """ Creation du graphe a partir de la matrice d'adjacence """	
         self.graph = nx.Graph()
         Adj = self.genome2adj()
@@ -116,14 +121,51 @@ class CGraph:
                     if Adj[i,j]==1:	
                         self.graph.add_edge(i,j)	# Ajout des aretes
 
+    def drawGraph(self): 
+
         nx.draw(self.graph)
         plt.savefig("Graph.png")
+        plt.close()
+        print self.graph.degree()
+        print self.graph.degree().keys()
+        print self.graph.degree().values()
+        print self.genome2adj()
+    
+    # A REVOIR PLUS TARD, SI LE TEMPS
+    # def robustness(self):
+    #     """ On pete un a un les noeuds du graphe en constatant l'effet sur la fitness.
+    #     On compte mesurer le nombre de noeuds d'importance sur la fitness """
+    #     save = self.graph
+    #     Fit = []
+    #     Nodes = range(self.nbNodes)
+        
+    #     # Fitness apres modifs pr chaque noeud
+    #     for n in range(len(save.nodes())):
+    #         self.graph.remove_node(n)
+    #         self.nbNodes -= 1
+    #         Fit.append(self.fitness(a,b,c))
+    #         print Fit
+    #         self.graph = save
+    #         self.nbNodes += 1
 
+    #     plt.grid()
+        
+    #     plt.plot(Nodes,[self.fitness(a,b,c)]*self.nbNodes,'--',c="blue")
+    #     plt.scatter(Nodes, Fit, c="red")
+    #     plt.savefig('Rob.png')
+    #     plt.close()
 
         
+            
+            
 
+
+# passer en self ?
+a = 0.3
+b = 0.45
+c = 0.25 #Valeurs WTF
 
 G = CGraph(50)
 G.drawGraph()
-G.fit2distri()
-G.clustering()
+print G.fitness(a,b,c)
+
