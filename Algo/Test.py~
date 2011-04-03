@@ -1,5 +1,0 @@
-import networkx as nx
-from numpy import *
-import matplotlib.pyplot as plt
-
-G = nx.scale_free_graph(100)
