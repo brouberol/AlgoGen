@@ -31,7 +31,8 @@ class CGraph:
             
 
         """ Remplissage et creation de la matrice d'adjacence """
-        A = zeros(shape=(self.nbNodes,self.nbNodes))
+        Adj = zeros(shape=(self.nbNodes,self.nbNodes))
+        print distri
 
         for i in (range(self.nbNodes-1)):
             li=[0]*(self.nbNodes-i-1)
@@ -42,10 +43,7 @@ class CGraph:
             print "ligne : "+str(li)
 
             for j in range(i,self.nbNodes-1):
-                A[i,j] = A[j,i] = li[j]
-
-        print A
-
+                Adj[i,j] = A[j,i] = li[j-i]
             
 
                                
