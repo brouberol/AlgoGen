@@ -3,6 +3,7 @@
 import networkx as nx
 from numpy import *
 import matplotlib.pyplot as plt
+import time
 
 class CGraph:
 
@@ -29,7 +30,7 @@ class CGraph:
             ThDistrib = [t-1 for t in ThDistrib]
             N+=1          
         distri = res
-        print "distri :"+str(distri)
+        #print "distri :"+str(distri)
         
         """ Creation du genome """ 
         self.genome = []
@@ -60,9 +61,8 @@ class CGraph:
         #     li.insert(0,0)
         #     self.genome += li
             #print "End loop"
-
+        
         self.createGraph()
-
 
 
     def fit2distri(self):
@@ -74,7 +74,6 @@ class CGraph:
         deg = range(max(connexions))
         eff = [connexions.count(x) for x in range(max(connexions))]
 
-        
 
         for x in deg: # No des noeuds
             if x!=0:
@@ -135,8 +134,9 @@ class CGraph:
     def createGraph(self):
         """ Creation du graphe a partir de la matrice d'adjacence """	
         self.graph = nx.Graph()
+        
         Adj = self.genome2adj()
-
+        
         for i in range (self.nbNodes):
             self.graph.add_node(i)		# Ajout de tous les noeuds
             for j in range(self.nbNodes):
@@ -158,7 +158,6 @@ class CGraph:
         Fit = []
         Nodes = range(self.nbNodes)
         
-        print "fitness th : "+ str(self.fitness(a,b,c))
         # Fitness apres modifs pr chaque noeud
         for n in range(len(self.graph.nodes())):
             self.graph.remove_node(n)
@@ -170,7 +169,6 @@ class CGraph:
             #print self.fitness(a,b,c)
             #print self.graph.number_of_nodes()
 
-
         Fit.sort()
 
         # Plot n' Features
@@ -181,7 +179,7 @@ class CGraph:
         plt.xlim(0,self.nbNodes)
         plt.legend(("Fitness du graph","Fitness apres deletion"),"upper right")
         plt.title("Mesure de la robustesse du graphe")
-        plt.savefig('Rob.png')
+        plt.savefig('Robustesse.png')
         plt.close()
 
         
@@ -194,8 +192,25 @@ a = 0.3
 b = 0.45
 c = 0.25 
 
-G = CGraph(10)
-G.drawGraph()
-G.fitness(a,b,c)
-G.robustness()
 
+print "Oo---TESTS UNITAIRES FONCTIONNELS---oO"
+print "\n#--STEP : Graph init--#"
+G = CGraph(50)
+print "\n#--STEP : Drawing--#"
+G.drawGraph()
+print "\n#--STEP : fit2distri--#"
+print G.fit2distri()
+print "\n#--STEP : clustering--#"
+print G.clustering()
+print "\n#--STEP : smallWorld--#"
+print G.smallWorld()
+print "\n#--STEP : fitness--#"
+print G.fitness(a,b,c)
+print "\n#--STEP : verification fitness--#"
+print G.fitness(a,b,c) == a*G.fit2distri() + b*G.clustering() + c*G.smallWorld()
+print "\n#--STEP : robustesse--#"
+t1 = time.time()
+G.robustness()
+t2 = time.time()
+
+print "Temps d'execution de robustness() : {0:.4}s".format(str(t2-t1))
