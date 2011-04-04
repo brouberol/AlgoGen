@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import networkx as nx
 from numpy import *
 import matplotlib.pyplot as plt
@@ -27,7 +29,8 @@ class CGraph:
             ThDistrib = [t-1 for t in ThDistrib]
             N+=1          
         distri = res
-
+        print "distri :"+str(distri)
+        
         """ Creation du genome """ 
         self.genome = []
         for i in (range(self.nbNodes)):
@@ -38,6 +41,25 @@ class CGraph:
             random.shuffle(li)
             li.insert(0,0)
             self.genome += li
+
+        # """ Creation du genome """ 
+        # ESSAI DE BIAIS DANS LA CREATION DU GENOME
+        # CREATION DE SERPENT !
+
+        # self.genome = []
+        # rempliNbOnes = [0]*self.nbNodes # Represente le nombre de 1 par lignes
+        
+        # for i in (range(self.nbNodes)):
+        #     li=[0]*(self.nbNodes-i-1)
+        #     if i != self.nbNodes-1: # Si on est pas deja a la derniere ligne
+        #         for k in range(distri[i]-rempliNbOnes[i]):
+        #             li[k]=1
+        #             rempliNbOnes[i+k]+=1
+        #             #print rempliNbOnes
+             
+        #     li.insert(0,0)
+        #     self.genome += li
+            #print "End loop"
 
         self.createGraph()
 
@@ -63,20 +85,20 @@ class CGraph:
             res += d/(d+ThDistrib[i])            
 
         # TMP
-        # Deg = self.graph.degree().keys()
-        # Val = self.graph.degree().values()
-        # plt.figure()
-        # plt.plot(Deg[1:],Val[1:],'ro-') #in-degree
-        # plt.xlabel('Degree')
-        # plt.ylabel('Number of nodes')
-        # plt.title('Degree distribution')
+        Deg = self.graph.degree().keys()
+        Val = self.graph.degree().values()
+        plt.figure()
+        plt.plot(Deg[1:],Val[1:],'ro-') #in-degree
+        plt.xlabel('Degree')
+        plt.ylabel('Number of nodes')
+        plt.title('Degree distribution')
 
-        # for x in Deg:
-        #         if x!=0:
-        #                 plt.scatter(x,self.nbNodes*x**(-2.2),c="blue")
+        for x in Deg:
+                if x!=0:
+                        plt.scatter(x,self.nbNodes*x**(-2.2),c="blue")
 
-        # plt.savefig('DegreeDistrib.png')
-        # plt.close()
+        plt.savefig('DegreeDistrib.png')
+        plt.close()
 
         # ATTENTION : lorsqu'on converge vers un scale-free: queue de distrib
         # tendant vers 0 : avg_res tend vers 1 !
@@ -90,9 +112,10 @@ class CGraph:
     def smallWorld(self):
         """ Renvoie le plus court chemin moyen entre deux noeuds """
         # On vise une valeur de 2.5
-        return abs((nx.average_shortest_path_length(self.graph)-2.5)/(nx.average_shortest_path_length(self.graph)))
+        return 1 - abs((nx.average_shortest_path_length(self.graph)-2.5)/(nx.average_shortest_path_length(self.graph)))
                                                                   
     def fitness(self,a,b,c):
+        # Lorsque la fitness vaut 0 : fitness minimale. Fitness max = 1
         return (a*self.fit2distri() + b*self.clustering() + c*self.smallWorld())/(a+b+c)
 
     def genome2adj(self):
@@ -122,50 +145,57 @@ class CGraph:
                         self.graph.add_edge(i,j)	# Ajout des aretes
 
     def drawGraph(self): 
-
+        """ Sauve le graphe dans un fichier png """
         nx.draw(self.graph)
         plt.savefig("Graph.png")
         plt.close()
-        print self.graph.degree()
-        print self.graph.degree().keys()
-        print self.graph.degree().values()
-        print self.genome2adj()
+ 
     
-    # A REVOIR PLUS TARD, SI LE TEMPS
-    # def robustness(self):
-    #     """ On pete un a un les noeuds du graphe en constatant l'effet sur la fitness.
-    #     On compte mesurer le nombre de noeuds d'importance sur la fitness """
-    #     save = self.graph
-    #     Fit = []
-    #     Nodes = range(self.nbNodes)
+    def robustness(self):
+        """ On pete un a un les noeuds du graphe en constatant l'effet sur la fitness.
+        On compte mesurer le nombre de noeuds d'importance sur la fitness """
+        save = self.graph.copy()
+        Fit = []
+        Nodes = range(self.nbNodes)
         
-    #     # Fitness apres modifs pr chaque noeud
-    #     for n in range(len(save.nodes())):
-    #         self.graph.remove_node(n)
-    #         self.nbNodes -= 1
-    #         Fit.append(self.fitness(a,b,c))
-    #         print Fit
-    #         self.graph = save
-    #         self.nbNodes += 1
+        print "fitness th : "+ str(self.fitness(a,b,c))
+        # Fitness apres modifs pr chaque noeud
+        for n in range(len(self.graph.nodes())):
+            self.graph.remove_node(n)
+            self.nbNodes -= 1
 
-    #     plt.grid()
-        
-    #     plt.plot(Nodes,[self.fitness(a,b,c)]*self.nbNodes,'--',c="blue")
-    #     plt.scatter(Nodes, Fit, c="red")
-    #     plt.savefig('Rob.png')
-    #     plt.close()
+            Fit.append(self.fitness(a,b,c))
+            self.graph = save.copy()
+            self.nbNodes += 1
+            #print self.fitness(a,b,c)
+            #print self.graph.number_of_nodes()
+
+
+        Fit.sort()
+
+        # Plot n' Features
+        plt.grid()
+        plt.plot(Nodes,[self.fitness(a,b,c)]*self.nbNodes,'--',c="blue")
+        plt.scatter(Nodes, Fit, c="red")
+        plt.ylim(0,1)
+        plt.xlim(0,self.nbNodes)
+        plt.legend(("Fitness du graph","Fitness apres deletion"),"upper right")
+        plt.title("Mesure de la robustesse du graphe")
+        plt.savefig('Rob.png')
+        plt.close()
 
         
             
+# ----- MAIN ------ #
             
-
-
 # passer en self ?
+# Valeurs WTF
 a = 0.3
 b = 0.45
-c = 0.25 #Valeurs WTF
+c = 0.25 
 
-G = CGraph(50)
+G = CGraph(10)
 G.drawGraph()
-print G.fitness(a,b,c)
+G.fitness(a,b,c)
+G.robustness()
 

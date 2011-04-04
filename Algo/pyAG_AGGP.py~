@@ -1,4 +1,6 @@
 from random import *
+import networkx as nx
+
 
 # class te:
 #     def __init__(self,ge=None):
@@ -29,32 +31,26 @@ from random import *
 class pyAG:
     def __init__(self,N,prod,txMut,txCross):
 	self.N=N # Nombre d'individus par population
-	self.txMut=txMut
-	self.txCross=txCross
-	self.prod=prod
-	self.pop=[prod() for i in range(N)]
-	self.gen = 0
-
-    def calc_fitness(self):
-	self.f=[]
-	self.fitm=0
-	self.fim=1000
-	for i,x in enumerate(self.pop):
-	    fi=x.fitness()
-	    self.fitm += fi
-	    if self.fim>fi:
-		self.fim=fi
-	    self.f.append([fi,i])
-	self.f.sort()
-	self.fitm/=1.0*self.N
+	self.txMut=txMut # Taux de mutation
+	self.txCross=txCross # Taux de crossover
+	self.prod = prod # ?
+	self.pop = [prod() for i in range(N)] # ?
+	self.gen = 0 # ?
+        self.newpop = None
 	
     def new_pop(self):
-	self.npop=[]
+        if self.newpop is not None:
+            for i in range(len(self.newpop)):
+                self.newpop[i].clear() # Destruction des graphe de la generation precedente
+
+	self.newpop=[]
+        
 	for i in range(self.N):
-	    r= randint(0,(self.N+1)*(self.N)/2)
-	    x=index(self.N,r)
+	    r = randint(0,(self.N+1)*(self.N)/2)
+	    x = index(self.N,r)
 	    ##print x,self.f[x][0]
-	    self.npop.append(self.prod(self.pop[self.f[x][1]].genome))
+	    self.newpop.append(self.prod(self.pop[self.f[x][1]].genome))
+
     def mutation(self):
 	for x in self.npop:
 	    g = x.genome
@@ -62,6 +58,7 @@ class pyAG:
 		if random()<self.txMut:
 		    g[i]=1-g[i]
 	    x.genome=g
+
     def cross(self):
 	for x in self.npop:
 	    if random()<self.txCross:
@@ -73,8 +70,10 @@ class pyAG:
 		else:
 		    g[z:]=r1[z:]
 		x.genome=g
+
     def update(self):
 	self.pop=self.npop[:]
+
     def genloop(self):
 	ga.calc_fitness()
 	self.new_pop()
