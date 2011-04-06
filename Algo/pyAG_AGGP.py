@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from random import *
 import networkx as nx
 from CGraph import *
@@ -19,7 +21,6 @@ class pyAG:
         self.fitness=[]
 
 	
-        # A MON AVIS, LE BUG EST DANS NEWPOP
     def new_pop(self):
         #if self.newpop is not None:
             #for i in range(len(self.newpop)):
@@ -102,23 +103,27 @@ def Index(N,x):
 
 seed(14)
 
-nbGraph = 10
+
 
 # A ADAPTER A VOS BESOINS !
-txMut = 0.05
-txCrossOver = 0.1
-nbNodes = 50
-a = 1
+nbGraph = 50
+nbNodes = 100
+
+txMut = 0.2
+txCrossOver = 0.2
+
+# parametres de ponderation de fitness
+a = 0.5
 b = 0.2
 c = 0.1
 
 
-plop = 0
 AlgoGen = pyAG(nbGraph,CGraph,nbNodes,txMut,txCrossOver,a,b,c)
 #AlgoGen.calc_fitness()
 
-for i in range(1000):
+for i in range(100):
     AlgoGen.genloop()
+
 
 # r=0
 # f=open("btr2.dat","w")

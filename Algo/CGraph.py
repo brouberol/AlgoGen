@@ -44,7 +44,7 @@ class CGraph:
                 li.insert(0,0)
                 self.genome += li
         else:
-            self.genome = gen
+            self.genome = gen[:] # Si self.genome = gen => COPIE DU POINTEUR
 
         # """ Creation du genome """ 
         # ESSAI DE BIAIS DANS LA CREATION DU GENOME
