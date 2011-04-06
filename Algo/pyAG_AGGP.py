@@ -21,51 +21,53 @@ import CGraph
 
 
 
-# def index(N,x):
-#     ind = 0
-#     j=0
-#     while x>ind:
-# 	ind += N-j
-# 	j+=1
-#     return j-1
+
 
 class pyAG:
     def __init__(self,N,prod,txMut,txCross,fita,fitb,fitc):
 	self.N=N # Nombre d'individus par population
 	self.txMut=txMut # Taux de mutation
 	self.txCross=txCross # Taux de crossover
-	self.prod = prod # ?
-	self.pop = [prod() for i in range(N)] # ?
-	self.gen = 0 # ?
+	self.prod = prod # individu (graphe)
+	self.pop = [prod() for i in range(N)] # generation
+	self.gen = 0 # 
         self.newpop = None
-        self.fita=fita # Parametres pour la somme de fitness
-        self.fitb=fitb
-        self.fitc=fitc
+        self.fita=fita # 
+        self.fitb=fitb # Parametres pour la somme de fitness
+        self.fitc=fitc #
         self.fitness=[-1]*self.N
+
+    def index(N,x):
+    ind = 0
+    j=0
+    while x>ind:
+	ind += N-j
+	j+=1
+    return j-1
 	
     def new_pop(self):
         if self.newpop is not None:
             for i in range(len(self.newpop)):
-                self.newpop[i].clear() # Destruction des graphe de la generation precedente
+                # self.newpop[i].clear() # Destruction des graphe de la generation precedente
 
 	self.newpop=[]
         
 	for i in range(self.N):
 	    r = randint(0,(self.N+1)*(self.N)/2)
-	    x = index(self.N,r) # ?????????????????????????????????????????????????
+	    x = index(self.N,r)
 	    ## print x,self.fitness[x][0]
-	    self.newpop.append(self.prod(self.pop[self.fitness[x][1]].genome)) # ???? Pk fitness[x][1]
+	    self.newpop.append(self.prod(self.pop[self.fitness[x][1]].genome)) 
 
     def mutation(self):
-	for x in self.npop:
-	    g = x.genome
-	    for i in range(len(g)):
+	for graph in self.newpop:
+	    gen = graph.genome
+	    for i in range(len(gen)):
 		if random()<self.txMut:
-		    g[i]=1-g[i]
-	    x.genome=g
+		    gen[i]=1-gen[i]
+	    graph.genome=gen
 
     def cross(self):
-	for x in self.npop:
+	for x in self.newpop:
 	    if random()<self.txCross:
 		g = x.genome
 		r1= self.pop[randint(0,self.N-1)].genome
@@ -77,8 +79,10 @@ class pyAG:
 		x.genome=g
 
     def update(self):
-	self.pop=self.npop[:]
+	self.pop=self.newpop[:]
         # Attention a l'operateur de copie
+        # Delete dans newpop
+        # Il faudra supprimer chaque elt de pop et copier
 
     def calc_fitness(self):
         for i in range(self.N):
@@ -107,3 +111,6 @@ for x in ga.pop[ga.f[0][1]].genome:
     r+=2*x-1
     f.write("%d\n"%r)
 f.close()
+
+
+# BOUCLE 
