@@ -1,6 +1,6 @@
 from random import *
 import networkx as nx
-import CGraph
+from CGraph import *
 
 
 # class te:
@@ -24,12 +24,12 @@ import CGraph
 
 
 class pyAG:
-    def __init__(self,N,prod,txMut,txCross,fita,fitb,fitc):
+    def __init__(self,N,prod,nodes,txMut,txCross,fita,fitb,fitc):
 	self.N=N # Nombre d'individus par population
 	self.txMut=txMut # Taux de mutation
 	self.txCross=txCross # Taux de crossover
 	self.prod = prod # individu (graphe)
-	self.pop = [prod() for i in range(N)] # generation
+	self.pop = [prod(nodes) for i in range(N)] # generation
 	self.gen = 0 # 
         self.newpop = None
         self.fita=fita # 
@@ -37,24 +37,16 @@ class pyAG:
         self.fitc=fitc #
         self.fitness=[-1]*self.N
 
-    def index(N,x):
-    ind = 0
-    j=0
-    while x>ind:
-	ind += N-j
-	j+=1
-    return j-1
 	
     def new_pop(self):
-        if self.newpop is not None:
-            for i in range(len(self.newpop)):
+        #if self.newpop is not None:
+            #for i in range(len(self.newpop)):
                 # self.newpop[i].clear() # Destruction des graphe de la generation precedente
-
-	self.newpop=[]
+        self.newpop=[]
         
 	for i in range(self.N):
 	    r = randint(0,(self.N+1)*(self.N)/2)
-	    x = index(self.N,r)
+	    x = Index(self.N,r)
 	    ## print x,self.fitness[x][0]
 	    self.newpop.append(self.prod(self.pop[self.fitness[x][1]].genome)) 
 
@@ -86,8 +78,14 @@ class pyAG:
 
     def calc_fitness(self):
         for i in range(self.N):
-            self.fitness[i]=self.pop[i].fitness(self.fita,self.fitb,self.fitc)
+            self.fitness[i]=(self.pop[i].fitness(self.fita,self.fitb,self.fitc),i)
+            self.fitness.sort()
 
+
+
+    def fitmin(self):
+        return self.fitness[0]
+        
     def genloop(self):
 	ga.calc_fitness()
 	self.new_pop()
@@ -97,20 +95,44 @@ class pyAG:
 	self.gen += 1
 	print self.fitm,self.fim # Fitness max - Fitness min ? A VERIFIER
 
+
+def Index(N,x):
+    ind = 0
+    j=0
+    while x>ind:
+        ind += N-j
+        j+=1
+    return j-1
+
+
+# MAIN----------------------
+
 seed(11)
 
-ga=pyAG(100,te,0.0001,0.5)
-ga.calc_fitness()
+nbGraph = 50
 
-for i in range(1000):
-    ga.genloop()
+# A ADAPTER A VOS BESOINS !
+txMut = 0.05
+txCrossOver = 0.1
+nbNodes = 50
+a = 0.1
+b = 0.2
+c = 0.3
 
-r=0
-f=open("btr2.dat","w")
-for x in ga.pop[ga.f[0][1]].genome:
-    r+=2*x-1
-    f.write("%d\n"%r)
-f.close()
+
+
+AlgoGen = pyAG(nbGraph,CGraph,nbNodes,txMut,txCrossOver,a,b,c)
+AlgoGen.calc_fitness()
+
+# for i in range(1000):
+#     ga.genloop()
+
+# r=0
+# f=open("btr2.dat","w")
+# for x in ga.pop[ga.f[0][1]].genome:
+#     r+=2*x-1
+#     f.write("%d\n"%r)
+# f.close()
 
 
 # BOUCLE 

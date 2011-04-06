@@ -8,7 +8,7 @@ import time
 class CGraph:
 
     """ Initialisation du graph """
-    def __init__(self,nbNodes):
+    def __init__(self,nbNodes,gen = None):
         self.nbNodes = nbNodes
         self.graph = None
         
@@ -31,18 +31,20 @@ class CGraph:
             ThDistrib = [t-1 for t in ThDistrib]
             N+=1          
         distri = res
-        #print "distri :"+str(distri)
         
         """ Creation du genome """ 
-        self.genome = []
-        for i in (range(self.nbNodes)):
-            li=[0]*(self.nbNodes-i-1)
-            if i != self.nbNodes-1:
-                for k in range(distri[i]):
-                    li[k]=1
-            random.shuffle(li)
-            li.insert(0,0)
-            self.genome += li
+        if gen is None:
+            self.genome = []
+            for i in (range(self.nbNodes)):
+                li=[0]*(self.nbNodes-i-1)
+                if i != self.nbNodes-1:
+                    for k in range(distri[i]):
+                        li[k]=1
+                random.shuffle(li)
+                li.insert(0,0)
+                self.genome += li
+        else:
+            self.genome = gen
 
         # """ Creation du genome """ 
         # ESSAI DE BIAIS DANS LA CREATION DU GENOME
@@ -208,26 +210,16 @@ class CGraph:
             
 # passer en self ?
 # Valeurs WTF
-a = 0.3
-b = 0.45
-c = 0.25 
+# a = 0.3
+# b = 0.45
+# c = 0.25 
 
 
-print "Oo---TESTS UNITAIRES FONCTIONNELS---oO"
-print "\n#--STEP : Graph init--#"
-G = CGraph(50)
-# print "\n#--STEP : Drawing--#"
-# G.plotGraph()
-# print "\n#--STEP : fit2distri--#"
-# print G.fit2distri()
-# print "\n#--STEP : clustering--#"
-# print G.clustering()
-# print "\n#--STEP : smallWorld--#"
-# print G.smallWorld()
-print "\n#--STEP : fitness--#"
-print G.fitness(a,b,c)
-#print "\n#--STEP : verification fitness--#"
-# print G.fitness(a,b,c) == a*G.fit2distri() + b*G.clustering() + c*G.smallWorld()
+# print "Oo---TESTS UNITAIRES FONCTIONNELS---oO"
+# print "\n#--STEP : Graph init--#"
+# G = CGraph(50)
+# print "\n#--STEP : fitness--#"
+# print G.fitness(a,b,c)
 #print "\n#--STEP : robustesse--#"
 #t1 = time.time()
 #G.robustness()
