@@ -145,6 +145,7 @@ class CGraph:
     def deleteGraph(self):
         if self.graph is not None:
             self.graph.clear()
+	self.graph = None
 
     
     def robustness(self):
@@ -168,6 +169,7 @@ class CGraph:
 
     def plotRobustess(self,nodes,fit):
         """ Plot l'ecart par rapport a la fitness d'origine pour chaque noeud retire """
+        self.createGraph()
         plt.grid()
         plt.plot(Nodes,[self.fitness(a,b,c)]*self.nbNodes,'--',c="blue")
         plt.scatter(nodes, fit, c="red")
@@ -177,10 +179,12 @@ class CGraph:
         plt.title("Mesure de la robustesse du graphe")
         plt.savefig('Robustesse.png')
         plt.close()
+        self.deleteGraph()
 
 
     def plotGraphDistri(self):
         """ Plot la distribution des degres du graphe """
+        self.createGraph()
         Deg = self.graph.degree().keys()
         Val = self.graph.degree().values()
         plt.figure()
@@ -194,13 +198,16 @@ class CGraph:
                         plt.scatter(x,self.nbNodes*x**(-2.2),c="blue")
         plt.savefig('DegreeDistrib.png')
         plt.close()
+        self.deleteGraph()
 
 
     def plotGraph(self): 
+	self.createGraph()
         """ Sauve le graphe dans un fichier png """
         nx.draw(self.graph)
         plt.savefig("Graph.png")
         plt.close()
+        self.deleteGraph()
  
         
 
